@@ -31,7 +31,7 @@ class Teknisi extends CI_Controller {
 	public function simpan_teknisi()
 	{
         $this->form_validation->set_rules('user_nama', 'Nama', 'required|min_length[1]|max_length[255]');
-        $this->form_validation->set_rules('user_email', 'Email', 'min_length[1]|max_length[255]');
+        $this->form_validation->set_rules('user_email', 'Email', 'is_unique[user.user_email]|min_length[1]|max_length[255]');
 		$this->form_validation->set_rules('user_username', 'Username', 'required|is_unique[user.user_username]|min_length[6]');
 		$this->form_validation->set_rules('user_password', 'Password', 'required|min_length[6]');
 
