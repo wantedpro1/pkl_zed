@@ -27,8 +27,31 @@
 </head>
 <body>
 	<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flashdata');?>"></div>
+	<?php
+      $user_id = $this->session->userdata('user_id');
+      if (!$user_id) {
+        redirect('login');
+      } else {
+        $data_admin = $this->db->query("SELECT * FROM user WHERE user_id='$user_id'")->row_array();
+
+        $timeout = 1; // setting timeout dalam menit
+        $logout = site_url('login'); // redirect halaman logout
+
+        $timeout = $timeout * 1500; // menit ke detik
+        if(isset($_SESSION['start_session'])){
+          $elapsed_time = time()-$_SESSION['start_session'];
+          if($elapsed_time >= $timeout){
+            $this->db->query("UPDATE user SET user_active = '0' WHERE user_id='$user_id'");
+            session_destroy();
+            echo "<script type='text/javascript'>alert('Sesi telah berakhir');window.location='$logout'</script>";
+          }
+        }
+
+        $_SESSION['start_session']=time();
+      }
+    ?>
 	<div class="wrapper">
-		<div class="main-header">
+	<div class="main-header">
 			<!-- Logo Header -->
 			<div class="logo-header" data-background-color="blue">
 				
@@ -66,18 +89,19 @@
 										<div class="user-box">
 											<div class="avatar-lg"><img src="<?= base_url(); ?>assets/dashboard/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
-												<h4>Hizrian</h4>
-												<p class="text-muted">hello@example.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+												<h4><?= $data_admin['user_nama'] ?></h4>
+												<p class="text-muted"><?= $data_admin['user_email'] ?></p>
+												<a href="<?= site_url('admin/settings') ?>" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
 											</div>
 										</div>
 									</li>
 									<li>
-										<div class="dropdown-divider"></div>
+										<!-- <div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="#">My Profile</a>
 										<a class="dropdown-item" href="#">My Balance</a>
-										<a class="dropdown-item" href="#">Inbox</a>
+										<a class="dropdown-item" href="#">Inbox</a> -->
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">Account Setting</a>
+										<a class="dropdown-item" href="<?= site_url('admin/settings') ?>">Account Setting</a>
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" id="tombol-logout" href="<?= site_url('login/logout') ?>">Logout</a>
 									</li>
@@ -99,14 +123,21 @@
 							<img src="<?= base_url(); ?>assets/dashboard/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
 						</div>
 						<div class="info">
-							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+							<a>
 								<span>
-									Hizrian
-									<span class="user-level">Administrator</span>
-									<span class="caret"></span>
+									<?= $data_admin['user_nama'] ?>
+									<span class="user-level"><?= $data_admin['user_role'] ?></span>
 								</span>
 							</a>
-							<div class="clearfix"></div>
+						
+							<!-- <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+								<span>
+									Hizrian
+									<span class="user-level">admin</span>
+									<span class="caret"></span>
+								</span>
+							</a> -->
+							<!-- <div class="clearfix"></div>
 
 							<div class="collapse in" id="collapseExample">
 								<ul class="nav">
@@ -126,26 +157,26 @@
 										</a>
 									</li>
 								</ul>
-							</div>
+							</div> -->
 						</div>
 					</div>
 					<ul class="nav nav-primary">
                         <li class="nav-item">
-							<a href="<?= site_url('superadmin/dashboard') ?>">
+							<a href="<?= site_url('admin/dashboard') ?>">
 								<i class="fas fa-home"></i>
 								<p>Dashboard</p>
 							</a>
 						</li>
                         <li class="nav-item">
-							<a href="<?= site_url('superadmin/admin') ?>">
-								<i class="fas fa-users"></i>
-								<p>Data Admin</p>
+							<a href="<?= site_url('admin/teknisi') ?>">
+								<i class="fas fa-wrench"></i>
+								<p>Kelola Data Teknisi</p>
 							</a>
 						</li>
-                        <li class="nav-item">
-							<a href="<?= site_url('superadmin/teknisi') ?>">
-								<i class="fas fa-wrench"></i>
-								<p>Data Teknisi</p>
+						<li class="nav-item">
+							<a href="<?= site_url('admin/rekapnota') ?>">
+								<i class="fas fa-file"></i>
+								<p>Rekap Nota</p>
 							</a>
 						</li>
 					</ul>
@@ -834,6 +865,54 @@
 			lineWidth: '2',
 			lineColor: '#ffa534',
 			fillColor: 'rgba(255, 165, 52, .14)'
+		});
+	</script>
+	<script >
+		$(document).ready(function() {
+			$('#basic-datatables').DataTable({
+			});
+
+			$('#multi-filter-select').DataTable( {
+				"pageLength": 5,
+				initComplete: function () {
+					this.api().columns().every( function () {
+						var column = this;
+						var select = $('<select class="form-control"><option value=""></option></select>')
+						.appendTo( $(column.footer()).empty() )
+						.on( 'change', function () {
+							var val = $.fn.dataTable.util.escapeRegex(
+								$(this).val()
+								);
+
+							column
+							.search( val ? '^'+val+'$' : '', true, false )
+							.draw();
+						} );
+
+						column.data().unique().sort().each( function ( d, j ) {
+							select.append( '<option value="'+d+'">'+d+'</option>' )
+						} );
+					} );
+				}
+			});
+
+			// Add Row
+			$('#add-row').DataTable({
+				"pageLength": 5,
+			});
+
+			var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+
+			$('#addRowButton').click(function() {
+				$('#add-row').dataTable().fnAddData([
+					$("#addName").val(),
+					$("#addPosition").val(),
+					$("#addOffice").val(),
+					action
+					]);
+				$('#addRowModal').modal('hide');
+
+			});
 		});
 	</script>
 </body>

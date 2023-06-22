@@ -11,7 +11,7 @@
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="<?= site_url('superadmin/teknisi') ?>">Data Teknisi</a>
+                <a href="<?= site_url('admin/teknisi') ?>">Data Teknisi</a>
             </li>
         </ul>
     </div>
@@ -21,7 +21,7 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <h4 class="card-title">Data Teknisi</h4>
-                        <a class="btn btn-primary ml-auto" href="<?= base_url('superadmin/teknisi/tambah_teknisi')?>">
+                        <a class="btn btn-primary ml-auto" href="<?= base_url('admin/teknisi/tambah_teknisi')?>">
                             <span class="btn-label">
                                 <i class="fa fa-plus"></i>
                             </span>
@@ -65,7 +65,7 @@
                                                 <i class="fa fa-edit"></i>
                                             </button> -->
                                             <?php $user_id = $row->user_id;?>
-                                            <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"><a id="tombol-hapus" href="<?= base_url()?>superadmin/teknisi/hapus_teknisi/<?= $user_id;?>"><i class="fa fa-times"></i></a>                   
+                                            <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"><a id="tombol-hapus" href="<?= base_url()?>admin/teknisi/hapus_teknisi/<?= $user_id;?>"><i class="fa fa-times"></i></a>                   
                                             </button>
                                         </div>
                                     </td>
