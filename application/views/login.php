@@ -9,10 +9,10 @@
     <title>SIAK - Halaman Utama</title>
 
     <!-- Core Styles -->
-    <link rel="stylesheet" href="<?= base_url(); ?>assets/css/siqtheme.css">
+    <link rel="stylesheet" href="<?= base_url(); ?>assets/loginold/css/siqtheme.css">
 
-    <link rel="apple-touch-icon" sizes="76x76" href="<?= base_url(); ?>assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="<?= base_url(); ?>assets/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="<?= base_url(); ?>assets/loginold/img/apple-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="<?= base_url(); ?>assets/loginold/img/favicon.png">
 </head>
 
 <body class="theme-default">
@@ -68,8 +68,8 @@
         </div>
     </div>
 
-    <script src="<?= base_url(); ?>assets/scripts/siqtheme.js"></script>
-    <script src="<?= base_url(); ?>assets/scripts/pages/pg_login.js" type="text/javascript"></script>
+    <script src="<?= base_url(); ?>assets/loginold/scripts/siqtheme.js"></script>
+    <script src="<?= base_url(); ?>assets/loginold/scripts/pages/pg_login.js" type="text/javascript"></script>
 </body>
 
 </html>
