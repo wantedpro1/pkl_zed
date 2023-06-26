@@ -4,7 +4,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>SIAK - Halaman Dashboard</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-	<link rel="icon" href="<?= base_url(); ?>assets/dashboard/img/icon.ico" type="image/x-icon"/>
+	<link rel="icon" href="<?= base_url(); ?>assets/logo/image.png" type="image/x-icon"/>
 
 	<!-- Fonts and icons -->
 	<script src="<?= base_url(); ?>assets/dashboard/js/plugin/webfont/webfont.min.js"></script>
@@ -56,7 +56,7 @@
 			<div class="logo-header" data-background-color="blue">
 				
 				<a href="index.html" class="logo">
-					<img src="<?= base_url(); ?>assets/dashboard/img/logo.svg" alt="navbar brand" class="navbar-brand">
+					<img src="<?= base_url(); ?>assets/logo/image.png" alt="navbar brand" class="navbar-brand" style="max-width: 45px">
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
@@ -191,7 +191,7 @@
 			</div>
 			<footer class="footer">
 				<div class="container-fluid">
-					<nav class="pull-left">
+					<!-- <nav class="pull-left">
 						<ul class="nav">
 							<li class="nav-item">
 								<a class="nav-link" href="https://www.themekita.com">
@@ -209,9 +209,9 @@
 								</a>
 							</li>
 						</ul>
-					</nav>
+					</nav> -->
 					<div class="copyright ml-auto">
-						2018, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">ThemeKita</a>
+						&copy; <?= date('Y') ?> PKL Zed. All rights reserved.
 					</div>				
 				</div>
 			</footer>

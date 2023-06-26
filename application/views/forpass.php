@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
-    <title>CV. KADANG BAYU - Halaman Login</title>
+    <title>CV. KADANG BAYU - Ganti Password</title>
 
     <!-- Core Styles -->
     <link rel="stylesheet" href="<?= base_url(); ?>assets/loginold/css/siqtheme.css">
@@ -25,39 +25,46 @@
                     <h3><span class="text-carolina bold">CV. </span>KADANG BAYU</h3>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="<?= base_url('login/auth')?>" enctype="multipart/form-data">
+                    <form method="POST" action="<?= base_url('login/conf_forpass')?>" enctype="multipart/form-data">
                         <div class="text-center pb-3">
-                            <h5 class="text-center bold">Sign-In</h5>
+                            <h5 class="text-center bold">Change your Password</h5>
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3 <?= form_error('user_email') ? 'has-error' : null?>">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ti-email"></i></span>
+                            </div>
+                            <input type="text" name="user_email" class="form-control" placeholder="email">
+                            <small style="color: red;"><?= form_error('user_email')?></small>
+                        </div>
+                        <div class="input-group mb-3 <?= form_error('user_username') ? 'has-error' : null?>">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="ti-user"></i></span>
                             </div>
                             <input type="text" name="user_username" class="form-control" placeholder="username">
+                            <small style="color: red;"><?= form_error('user_username')?></small>
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3 <?= form_error('user_newpass') ? 'has-error' : null?>">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="ti-lock"></i></span>
                             </div>
-                            <input type="password" name="user_password" class="form-control" placeholder="password">
+                            <input type="password" name="user_newpass" class="form-control" placeholder="new password">
+                            <small style="color: red;"><?= form_error('user_newpass')?></small>
                         </div>
-                        <div class="form-group">
-                            <label>Login Sebagai</label>
-                            <select name="user_role" class="form-control selectpicker">
-                                <option>--Pilih satu---</option>
-                                <option>SuperAdmin</option>
-                                <option>Admin</option>
-                                <option>Teknisi</option>
-                            </select>
-                        </div>
+                        <div class="input-group mb-3 <?= form_error('user_confnewpass') ? 'has-error' : null?>">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ti-key"></i></span>
+                            </div>
+                            <input type="password" name="user_confnewpass" class="form-control" placeholder="confirm new password">
+                            <small style="color: red;"><?= form_error('user_confnewpass')?></small>
+                        </div>                       
                         <div class="form-group text-right">
-                            <button type="submit" class="btn btn-carolina">Login</button>
+                            <button type="submit" class="btn btn-carolina">Change Password</button>
                         </div>
                     </form>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item text-center">
-                        <p class="card-text">Kamu melupakan password? <a href="<?= site_url('login/forpass')?>" class="card-link">Ganti Password</a></p> 
+                        <p class="card-text">Sudah ingat password? <a href="<?= site_url('login')?>" class="card-link">Login</a></p> 
                     </li>
                 </ul>
                 <div class="card-footer">
