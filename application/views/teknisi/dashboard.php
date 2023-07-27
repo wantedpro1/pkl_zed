@@ -32,7 +32,7 @@
       if (!$user_id) {
         redirect('login');
       } else {
-        $data_admin = $this->db->query("SELECT * FROM user WHERE user_id='$user_id'")->row_array();
+        $data_teknisi = $this->db->query("SELECT * FROM user WHERE user_id='$user_id'")->row_array();
 
         $timeout = 1; // setting timeout dalam menit
         $logout = site_url('login'); // redirect halaman logout
@@ -89,9 +89,9 @@
 										<div class="user-box">
 											<div class="avatar-lg"><img src="<?= base_url(); ?>assets/dashboard/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
-												<h4><?= $data_admin['user_nama'] ?></h4>
-												<p class="text-muted"><?= $data_admin['user_email'] ?></p>
-												<a href="<?= site_url('admin/settings') ?>" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+												<h4><?= $data_teknisi['user_nama'] ?></h4>
+												<p class="text-muted"><?= $data_teknisi['user_email'] ?></p>
+												<a href="<?= site_url('superadmin/settings') ?>" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
 											</div>
 										</div>
 									</li>
@@ -101,7 +101,7 @@
 										<a class="dropdown-item" href="#">My Balance</a>
 										<a class="dropdown-item" href="#">Inbox</a> -->
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="<?= site_url('admin/settings') ?>">Account Setting</a>
+										<a class="dropdown-item" href="<?= site_url('superadmin/settings') ?>">Account Setting</a>
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" id="tombol-logout" href="<?= site_url('login/logout') ?>">Logout</a>
 									</li>
@@ -125,15 +125,15 @@
 						<div class="info">
 							<a>
 								<span>
-									<?= $data_admin['user_nama'] ?>
-									<span class="user-level"><?= $data_admin['user_role'] ?></span>
+									<?= $data_teknisi['user_nama'] ?>
+									<span class="user-level"><?= $data_teknisi['user_role'] ?></span>
 								</span>
 							</a>
 						
 							<!-- <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 								<span>
 									Hizrian
-									<span class="user-level">admin</span>
+									<span class="user-level">SuperAdmin</span>
 									<span class="caret"></span>
 								</span>
 							</a> -->
@@ -162,21 +162,27 @@
 					</div>
 					<ul class="nav nav-primary">
                         <li class="nav-item">
-							<a href="<?= site_url('admin/dashboard') ?>">
+							<a href="<?= site_url('teknisi/dashboard') ?>">
 								<i class="fas fa-home"></i>
 								<p>Dashboard</p>
 							</a>
 						</li>
                         <li class="nav-item">
-							<a href="<?= site_url('admin/teknisi') ?>">
+							<a href="<?= site_url('teknisi/nopel') ?>">
 								<i class="fas fa-wrench"></i>
-								<p>Kelola Data Teknisi</p>
+								<p>Nota Pelanggan</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?= site_url('admin/rekapnota') ?>">
+							<a href="<?= site_url('teknisi/garansi') ?>">
+								<i class="fas fa-user"></i>
+								<p>Kartu Garansi</p>
+							</a>
+						</li>
+                        <li class="nav-item">
+							<a href="<?= site_url('teknisi/kerja') ?>">
 								<i class="fas fa-file"></i>
-								<p>Rekap Nota</p>
+								<p>Hasil Kerja</p>
 							</a>
 						</li>
 					</ul>
