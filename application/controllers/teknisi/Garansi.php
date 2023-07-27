@@ -40,15 +40,25 @@ class Garansi extends CI_Controller
 
     public function simpan_garansi()
 	{
-		$this->form_validation->set_rules('garansi_no', 'No garansi', 'required|is_unique[garansi.garansi_no]|max_length[50]');
-        $this->form_validation->set_rules('garansi_nama', 'Nama garansi', 'required|min_length[1]|max_length[255]');
-		$this->form_validation->set_rules('garansi_jenis', 'Jenis garansi', 'required|min_length[1]|max_length[255]');
-		$this->form_validation->set_rules('garansi_tanggal', 'Tanggal Upload garansi', 'max_length[255]');
-		$this->form_validation->set_rules('garansi_keterangan', 'Keterangan', 'max_length[255]');
+		$this->form_validation->set_rules('garansi_nowo', 'No. WO', 'min_length[1]|max_length[20]');
+        $this->form_validation->set_rules('garansi_nofaktur', 'No. Faktur', 'min_length[1]|max_length[20]');
+        $this->form_validation->set_rules('garansi_nama', 'Nama Konsumen', 'required|min_length[1]|max_length[255]');
+        $this->form_validation->set_rules('garansi_alamat', 'Alamat', 'required|min_length[1]|max_length[1000]');
+		$this->form_validation->set_rules('garansi_kota', 'Kota', 'required|min_length[1]|max_length[255]');
+        $this->form_validation->set_rules('garansi_telepon', 'No. Telepon', 'required|numeric|min_length[1]|max_length[14]');
+		$this->form_validation->set_rules('garansi_keluhan', 'Keluhan', 'min_length[1]|max_length[255]');
+		$this->form_validation->set_rules('garansi_produk', 'Produk', 'min_length[1]|max_length[20]');
+        $this->form_validation->set_rules('garansi_nobukkun', 'No. Bukti Kunjungan', 'min_length[1]|max_length[20]');
+        $this->form_validation->set_rules('garansi_noseri', 'No. Seri', 'min_length[1]|max_length[50]');
+        $this->form_validation->set_rules('garansi_aktivser', 'Aktivitas Service', 'min_length[1]|max_length[1000]');
+        $this->form_validation->set_rules('garansi_partno', 'No. Spare Part', 'min_length[1]|max_length[20]');
+        $this->form_validation->set_rules('garansi_ongkostransport', 'Ongkos Transport', 'required|min_length[3]|max_length[9]');
+        $this->form_validation->set_rules('garansi_ongkoskerja', 'Ongkos Kerja', 'required|min_length[3]|max_length[9]');
 
 		$this->form_validation->set_message('required', '*{field} masih kosong. Silahkan diisi.');
 		$this->form_validation->set_message('max_length', '*{field} tidak boleh lebih dari {param} karakter.');
 		$this->form_validation->set_message('min_length', '*{field} setidaknya harus memiliki {param} karakter.');
+        $this->form_validation->set_message('numeric', '*{field} hanya boleh di isi dengan angka.');
 		$this->form_validation->set_message('is_unique', '*{field} sudah ada.');
 
         if ($this->form_validation->run() == FALSE) {
@@ -58,30 +68,36 @@ class Garansi extends CI_Controller
             ];
             $this->load->view('teknisi/partial/dashboard', $isi);
         } else {
-			$config['upload_path'] 		= './documents/'; 			        //path folder
-			$config['allowed_types'] 	= 'pdf|doc|docx|ppt|pptx|zip|rar'; 	//type yang dapat diakses bisa anda sesuaikan
-			$config['encrypt_name'] 	= TRUE; 						    //nama yang terupload nantinya
-			$config['max_size'] 		= 10240;							//maksimal ukuran 10 MB
-
-			$this->upload->initialize($config);
-			$this->load->library('upload', $config);
-			if ($_FILES['garansi_file']['name']) {
-				$this->upload->do_upload('garansi_file');
-				$garansi_file = $this->upload->data('file_name');
-			}
-
 			$data = array (
-				'garansi_id'            => $this->input->post('garansi_id'),
-                'garansi_no' 		    => $this->input->post('garansi_no') ,
-				'garansi_nama' 		    => $this->input->post('garansi_nama') ,
-				'garansi_jenis' 	    => $this->input->post('garansi_jenis') ,
-				'garansi_tanggal' 	    => $this->input->post('garansi_tanggal') ,
-				'garansi_file'		    => $garansi_file,
-                'garansi_keterangan' 	=> $this->input->post('garansi_keterangan') 
+				'garansi_id'                => $this->input->post('garansi_id') ,
+                'garansi_tgllaporan'        => $this->input->post('garansi_tgllaporan') ,
+				'garansi_tglkunjungan' 		=> $this->input->post('garansi_tglkunjungan') ,
+				'garansi_tglperbaikan' 	    => $this->input->post('garansi_tglperbaikan') ,
+				'garansi_tglselesai' 	    => $this->input->post('garansi_tglselesai') ,
+				'garansi_nowo'		        => $this->input->post('garansi_nowo') ,
+                'garansi_nofaktur' 	        => $this->input->post('garansi_nofaktur') ,
+
+                'garansi_nama'              => $this->input->post('garansi_nama') ,
+                'garansi_alamat'            => $this->input->post('garansi_alamat') ,
+				'garansi_kota' 		        => $this->input->post('garansi_kota') ,
+				'garansi_telepon' 	        => $this->input->post('garansi_telepon') ,
+				'garansi_keluhan' 	        => $this->input->post('garansi_keluhan') ,
+				'garansi_produk'		    => $this->input->post('garansi_produk') ,
+                'garansi_tglbeli' 	        => $this->input->post('garansi_tglbeli') ,
+
+                'garansi_nobukkun'          => $this->input->post('garansi_nobukkun') ,
+                'garansi_bl'                => $this->input->post('garansi_bl') ,
+				'garansi_noseri' 		    => $this->input->post('garansi_noseri') ,
+				'garansi_aktivser' 	        => $this->input->post('garansi_aktivser') ,
+				'garansi_partno' 	        => $this->input->post('garansi_partno') ,
+				'garansi_ongkostransport'	=> $this->input->post('garansi_ongkostransport') ,
+                'garansi_ongkoskerja' 	    => $this->input->post('garansi_ongkoskerja') 
 			);
 
+            $data['garansi_totalongkos'] = $data['garansi_ongkostransport'] + $data['garansi_ongkoskerja'];
+
 			$this->db->insert('garansi', $data);
-			$this->session->set_flashdata('flashdata','Data garansi berhasil ditambahkan');
+			$this->session->set_flashdata('flashdata','Data Garansi berhasil ditambahkan');
 			redirect('teknisi/garansi');
 		}
     }
@@ -97,63 +113,66 @@ class Garansi extends CI_Controller
 
     public function update_garansi()
 	{
-		$this->form_validation->set_rules('garansi_no', 'No garansi', 'required|max_length[50]');
-        $this->form_validation->set_rules('garansi_nama', 'Nama garansi', 'required|min_length[1]|max_length[255]');
-		$this->form_validation->set_rules('garansi_jenis', 'Jenis garansi', 'required|min_length[1]|max_length[255]');
-		$this->form_validation->set_rules('garansi_tanggal', 'Tanggal Upload garansi', 'max_length[255]');
-		$this->form_validation->set_rules('garansi_keterangan', 'Keterangan', 'max_length[255]');
+		$this->form_validation->set_rules('garansi_nowo', 'No. WO', 'min_length[1]|max_length[20]');
+        $this->form_validation->set_rules('garansi_nofaktur', 'No. Faktur', 'min_length[1]|max_length[20]');
+        $this->form_validation->set_rules('garansi_nama', 'Nama Konsumen', 'required|min_length[1]|max_length[255]');
+        $this->form_validation->set_rules('garansi_alamat', 'Alamat', 'required|min_length[1]|max_length[1000]');
+		$this->form_validation->set_rules('garansi_kota', 'Kota', 'required|min_length[1]|max_length[255]');
+        $this->form_validation->set_rules('garansi_telepon', 'No. Telepon', 'required|numeric|min_length[1]|max_length[14]');
+		$this->form_validation->set_rules('garansi_keluhan', 'Keluhan', 'min_length[1]|max_length[255]');
+		$this->form_validation->set_rules('garansi_produk', 'Produk', 'min_length[1]|max_length[20]');
+        $this->form_validation->set_rules('garansi_nobukkun', 'No. Bukti Kunjungan', 'min_length[1]|max_length[20]');
+        $this->form_validation->set_rules('garansi_noseri', 'No. Seri', 'min_length[1]|max_length[50]');
+        $this->form_validation->set_rules('garansi_aktivser', 'Aktivitas Service', 'min_length[1]|max_length[1000]');
+        $this->form_validation->set_rules('garansi_partno', 'No. Spare Part', 'min_length[1]|max_length[20]');
+        $this->form_validation->set_rules('garansi_ongkostransport', 'Ongkos Transport', 'required|min_length[3]|max_length[9]');
+        $this->form_validation->set_rules('garansi_ongkoskerja', 'Ongkos Kerja', 'required|min_length[3]|max_length[9]');
 
 		$this->form_validation->set_message('required', '*{field} masih kosong. Silahkan diisi.');
 		$this->form_validation->set_message('max_length', '*{field} tidak boleh lebih dari {param} karakter.');
 		$this->form_validation->set_message('min_length', '*{field} setidaknya harus memiliki {param} karakter.');
+        $this->form_validation->set_message('numeric', '*{field} hanya boleh di isi dengan angka.');
 		$this->form_validation->set_message('is_unique', '*{field} sudah ada.');
 
-        $garansi_id = $this->input->post('garansi_id');
+        $id = $this->input->post('garansi_id');
         if ($this->form_validation->run() == FALSE) {
             $isi = [
                 'content'   => 'teknisi/garansi/edit_garansi',
-                'data'	    => $this->m_garansi->edit($garansi_id),
+                'data'	    => $this->m_garansi->edit($id),
             ];
             $this->load->view('teknisi/partial/dashboard', $isi);
         } else {
-			$config['upload_path'] 		= './documents/'; 			        //path folder
-			$config['allowed_types'] 	= 'pdf|doc|docx|ppt|pptx|zip|rar'; 	//type yang dapat diakses bisa anda sesuaikan
-			$config['encrypt_name'] 	= TRUE; 						    //nama yang terupload nantinya
-			$config['max_size'] 		= 10240;							//maksimal ukuran 10 MB
+			$data = array (
+				'garansi_id'                => $this->input->post('garansi_id') ,
+                'garansi_tgllaporan'        => $this->input->post('garansi_tgllaporan') ,
+				'garansi_tglkunjungan' 		=> $this->input->post('garansi_tglkunjungan') ,
+				'garansi_tglperbaikan' 	    => $this->input->post('garansi_tglperbaikan') ,
+				'garansi_tglselesai' 	    => $this->input->post('garansi_tglselesai') ,
+				'garansi_nowo'		        => $this->input->post('garansi_nowo') ,
+                'garansi_nofaktur' 	        => $this->input->post('garansi_nofaktur') ,
 
-			$this->upload->initialize($config);
-			$this->load->library('upload', $config);
-			if ($_FILES['garansi_file']['name']) {
-				$this->upload->do_upload('garansi_file');
-				$garansi_file = $this->upload->data('file_name');
-			}
+                'garansi_nama'              => $this->input->post('garansi_nama') ,
+                'garansi_alamat'            => $this->input->post('garansi_alamat') ,
+				'garansi_kota' 		        => $this->input->post('garansi_kota') ,
+				'garansi_telepon' 	        => $this->input->post('garansi_telepon') ,
+				'garansi_keluhan' 	        => $this->input->post('garansi_keluhan') ,
+				'garansi_produk'		    => $this->input->post('garansi_produk') ,
+                'garansi_tglbeli' 	        => $this->input->post('garansi_tglbeli') ,
 
-            if (!$garansi_file) {
-                $data = array (
-                    'garansi_no' 		    => $this->input->post('garansi_no') ,
-                    'garansi_nama' 		    => $this->input->post('garansi_nama') ,
-                    'garansi_jenis' 	    => $this->input->post('garansi_jenis') ,
-                    'garansi_tanggal' 	    => $this->input->post('garansi_tanggal') ,
-                    'garansi_keterangan' 	=> $this->input->post('garansi_keterangan') 
-                );
-                
-                $this->m_garansi->update($garansi_id, $data);
-                $this->session->set_flashdata('flashdata','Data garansi berhasil diupdate');
-                redirect('teknisi/garansi');
-            } else {
-                $data = array (
-                    'garansi_no' 		    => $this->input->post('garansi_no') ,
-                    'garansi_nama' 		    => $this->input->post('garansi_nama') ,
-                    'garansi_jenis' 	    => $this->input->post('garansi_jenis') ,
-                    'garansi_tanggal' 	    => $this->input->post('garansi_tanggal') ,
-                    'garansi_file'		    => $garansi_file,
-                    'garansi_keterangan' 	=> $this->input->post('garansi_keterangan') 
-                );
+                'garansi_nobukkun'          => $this->input->post('garansi_nobukkun') ,
+                'garansi_bl'                => $this->input->post('garansi_bl') ,
+				'garansi_noseri' 		    => $this->input->post('garansi_noseri') ,
+				'garansi_aktivser' 	        => $this->input->post('garansi_aktivser') ,
+				'garansi_partno' 	        => $this->input->post('garansi_partno') ,
+				'garansi_ongkostransport'	=> $this->input->post('garansi_ongkostransport') ,
+                'garansi_ongkoskerja' 	    => $this->input->post('garansi_ongkoskerja') 
+			);
 
-                $this->m_garansi->update($garansi_id, $data);
-                $this->session->set_flashdata('flashdata','Data garansi berhasil diupdate');
-                redirect('teknisi/garansi');
-            }
+            $data['garansi_totalongkos'] = $data['garansi_ongkostransport'] + $data['garansi_ongkoskerja'];
+
+            $this->m_garansi->update($id, $data);
+            $this->session->set_flashdata('flashdata','Data Garansi berhasil diupdate');
+            redirect('teknisi/garansi');
 		}
     }
 

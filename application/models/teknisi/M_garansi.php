@@ -5,7 +5,7 @@ class M_garansi Extends CI_Model{
 	public function garansi_id()
     {
         $this->db->select('RIGHT(garansi.garansi_id,5) as kode', FALSE);
-        $this->db->where('LEFT(garansi.garansi_id,2)','AD');
+        $this->db->where('LEFT(garansi.garansi_id,3)','GRN');
         $this->db->order_by('garansi_id','DESC');
         $this->db->limit(1);
         $query = $this->db->get('garansi');

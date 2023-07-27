@@ -11,6 +11,12 @@
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
+                <a href="<?= site_url('teknisi/garansi') ?>">Data Garansi</a>
+            </li>
+            <li class="separator">
+                <i class="flaticon-right-arrow"></i>
+            </li>
+            <li class="nav-item">
                 <a href="<?= site_url('teknisi/garansi/detail_garansi') ?>">Detail Data Garansi</a>
             </li>
         </ul>
