@@ -1,11 +1,11 @@
 <?php 
 
-class M_teknisi Extends CI_Model{
+class M_admin Extends CI_Model{
 
 	public function user_id()
     {
         $this->db->select('RIGHT(user.user_id,5) as kode', FALSE);
-        $this->db->where('LEFT(user.user_id,2)','TK');
+        $this->db->where('LEFT(user.user_id,2)','AD');
         $this->db->order_by('user_id','DESC');
         $this->db->limit(1);
         $query = $this->db->get('user');
@@ -18,10 +18,10 @@ class M_teknisi Extends CI_Model{
         }
 
         $kodemax = str_pad($kode,5,"0",STR_PAD_LEFT);
-        $kodejadi = "TK".$kodemax;
+        $kodejadi = "AD".$kodemax;
         return $kodejadi;
     }
-    
+
     public function cekusername($user_username){
         $hasil = $this->db->query("SELECT * FROM user WHERE user_username='$user_username'");
         return $hasil;
@@ -39,7 +39,7 @@ class M_teknisi Extends CI_Model{
 		$this->db->update('user', $data);
 	}
 
-	public function hapus_teknisi($id)
+	public function hapus_admin($id)
 	{
 		$this->db->where('user_id', $id);
 		$this->db->delete('user');

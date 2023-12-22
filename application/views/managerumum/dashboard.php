@@ -93,13 +93,13 @@
 											<div class="u-text">
 												<h4><?= $data_admin['user_nama'] ?></h4>
 												<p class="text-muted"><?= $data_admin['user_role'] ?></p>
-												<a href="<?= site_url('admin/profil') ?>" class="btn btn-xs btn-secondary btn-sm">Lihat Profil</a>
+												<a href="<?= site_url('managerumum/profil') ?>" class="btn btn-xs btn-secondary btn-sm">Lihat Profil</a>
 											</div>
 										</div>
 									</li>
 									<li>
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="<?= site_url('admin/profil/settings') ?>">Pengaturan</a>
+										<a class="dropdown-item" href="<?= site_url('managerumum/profil/settings') ?>">Pengaturan</a>
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" id="tombol-logout" href="<?= site_url('login/logout') ?>">Logout</a>
 									</li>
@@ -131,25 +131,31 @@
 					</div>
 					<ul class="nav nav-primary">
                         <li class="nav-item">
-							<a href="<?= site_url('admin/dashboard') ?>">
+							<a href="<?= site_url('managerumum/dashboard') ?>">
 								<i class="fas fa-home"></i>
 								<p>Dashboard</p>
 							</a>
 						</li>
                         <li class="nav-item">
-							<a href="<?= site_url('admin/teknisi') ?>">
+							<a href="<?= site_url('managerumum/admin') ?>">
+								<i class="fas fa-users"></i>
+								<p>Kelola Data Admin</p>
+							</a>
+						</li>
+                        <li class="nav-item">
+							<a href="<?= site_url('managerumum/teknisi') ?>">
 								<i class="fas fa-wrench"></i>
 								<p>Kelola Data Teknisi</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?= site_url('admin/jadser') ?>">
+							<a href="<?= site_url('managerumum/jadser') ?>">
 								<i class="fas fa-toolbox"></i>
 								<p>Jadwal Service</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?= site_url('admin/dokgampek') ?>">
+							<a href="<?= site_url('managerumum/dokgampek') ?>">
 								<i class="fas fa-image"></i>
 								<p>Dokumentasi Pekerjaan</p>
 							</a>

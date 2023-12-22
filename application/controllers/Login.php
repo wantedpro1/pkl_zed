@@ -18,7 +18,6 @@ class Login extends CI_Controller
 	{
 		$user_username	     = $this->input->post('user_username');
 		$user_password	     = $this->input->post('user_password');
-		$user_role		     = $this->input->post('user_role');
         $data['user_active'] = '1';
 		$cakun		         = $this->m_login->cekakun($user_username,$user_password);
 
@@ -28,17 +27,17 @@ class Login extends CI_Controller
             $user_id = $xcakun['user_id'];
             $this->session->set_userdata('user_id',$user_id);
 
-			if(($xcakun['user_role'] == 'SuperAdmin') && ($user_role == 'SuperAdmin')){
+			if(($xcakun['user_role'] == 'Manager Umum')){
                 $this->m_login->updateactive($user_id, $data);
-				redirect('superadmin/admin');
-			} elseif(($xcakun['user_role'] == 'Admin') && ($user_role == 'Admin')){
+				redirect('managerumum/dashboard');
+			} elseif(($xcakun['user_role'] == 'Admin')){
                 $this->m_login->updateactive($user_id, $data);
 				redirect('admin/dashboard');
-			} elseif(($xcakun['user_role'] == 'Teknisi') && ($user_role == 'Teknisi')){
+			} elseif(($xcakun['user_role'] == 'Teknisi')){
                 $this->m_login->updateactive($user_id, $data);
 				redirect('teknisi/dashboard');
 			} else{
-				$this->session->set_flashdata('flashdata','Role, Username, atau Password salah');
+				$this->session->set_flashdata('flashdata','Username atau Password salah');
 				redirect('login');
 			}
 		} else if (!$user_username || !$user_password) {

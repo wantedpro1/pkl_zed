@@ -3,7 +3,7 @@
         <h4 class="page-title">Forms</h4>
         <ul class="breadcrumbs">
             <li class="nav-home">
-                <a href="<?= site_url('admin/dashboard') ?>">
+                <a href="<?= site_url('managerumum/dashboard') ?>">
                     <i class="flaticon-home"></i>
                 </a>
             </li>
@@ -11,13 +11,13 @@
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="<?= site_url('admin/teknisi') ?>">Data Teknisi</a>
+                <a href="<?= site_url('managerumum/teknisi') ?>">Data Teknisi</a>
             </li>
             <li class="separator">
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="<?= base_url('admin/teknisi/tambah_teknisi')?>">Tambah Teknisi</a>
+                <a href="<?= base_url('managerumum/teknisi/tambah_teknisi')?>">Tambah Teknisi</a>
             </li>
         </ul>
     </div>
@@ -27,7 +27,7 @@
                 <div class="card-header">
                     <div class="card-title">Tambah Teknisi</div>
                 </div>
-                <form method="POST" action="<?= base_url().'admin/teknisi/simpan_teknisi'?>" class="form-sample" enctype="multipart/form-data">
+                <form method="POST" action="<?= base_url().'managerumum/teknisi/simpan_teknisi'?>" class="form-sample" enctype="multipart/form-data">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6 col-lg-12">
@@ -68,7 +68,7 @@
                     </div>
                     <div class="card-action pull-right">
                         <button type="submit" class="btn btn-success">Submit</button>
-                        <a href="<?= site_url('admin/teknisi')?>" type="submit" class="btn btn-danger">Cancel</a>
+                        <a href="<?= site_url('managerumum/teknisi')?>" type="submit" class="btn btn-danger">Cancel</a>
                     </div>
                 </form>
             </div>

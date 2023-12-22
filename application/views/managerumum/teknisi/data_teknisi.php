@@ -3,7 +3,7 @@
         <h4 class="page-title">Data Teknisi</h4>
         <ul class="breadcrumbs">
             <li class="nav-home">
-                <a href="<?= site_url('admin/dashboard') ?>">
+                <a href="<?= site_url('managerumum/dashboard') ?>">
                     <i class="flaticon-home"></i>
                 </a>
             </li>
@@ -11,7 +11,7 @@
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="<?= site_url('admin/teknisi') ?>">Data Teknisi</a>
+                <a href="<?= site_url('managerumum/teknisi') ?>">Data Teknisi</a>
             </li>
         </ul>
     </div>
@@ -21,7 +21,7 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <h4 class="card-title">Data Teknisi</h4>
-                        <a class="btn btn-primary ml-auto" href="<?= base_url('admin/teknisi/tambah_teknisi')?>">
+                        <a class="btn btn-primary ml-auto" href="<?= base_url('managerumum/teknisi/tambah_teknisi')?>">
                             <span class="btn-label">
                                 <i class="fa fa-plus"></i>
                             </span>
@@ -62,9 +62,9 @@
                                     <td>
                                         <div class="form-button-action">
                                             <?php $user_id = $row->user_id;?>
-                                            <button type="button" data-toggle="tooltip" title="" class="btn-link"><a href="<?= base_url()?>admin/teknisi/edit_teknisi/<?= $user_id;?>"><i class="fa fa-edit"></i></a>                                             
+                                            <button type="button" data-toggle="tooltip" title="" class="btn-link"><a href="<?= base_url()?>managerumum/teknisi/edit_teknisi/<?= $user_id;?>"><i class="fa fa-edit"></i></a>                                             
                                             </button>
-                                            <button type="button" data-toggle="tooltip" title="" class="btn-link"><a id="tombol-hapus" href="<?= base_url()?>admin/teknisi/hapus_teknisi/<?= $user_id;?>"><i class="fa fa-times"></i></a>                   
+                                            <button type="button" data-toggle="tooltip" title="" class="btn-link"><a id="tombol-hapus" href="<?= base_url()?>managerumum/teknisi/hapus_teknisi/<?= $user_id;?>"><i class="fa fa-times"></i></a>                   
                                             </button>
                                         </div>
                                     </td>

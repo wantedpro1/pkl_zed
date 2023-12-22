@@ -1,9 +1,9 @@
 <div class="page-inner">
     <div class="page-header">
-        <h4 class="page-title">Data Teknisi</h4>
+        <h4 class="page-title">Data Admin</h4>
         <ul class="breadcrumbs">
             <li class="nav-home">
-                <a href="<?= site_url('admin/dashboard') ?>">
+                <a href="<?= site_url('managerumum/dashboard') ?>">
                     <i class="flaticon-home"></i>
                 </a>
             </li>
@@ -11,7 +11,7 @@
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="<?= site_url('admin/teknisi') ?>">Data Teknisi</a>
+                <a href="<?= site_url('managerumum/admin') ?>">Data Admin</a>
             </li>
         </ul>
     </div>
@@ -20,12 +20,12 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
-                        <h4 class="card-title">Data Teknisi</h4>
-                        <a class="btn btn-primary ml-auto" href="<?= base_url('admin/teknisi/tambah_teknisi')?>">
+                        <h4 class="card-title">Data Admin</h4>
+                        <a class="btn btn-primary ml-auto" href="<?= base_url('managerumum/admin/tambah_admin')?>">
                             <span class="btn-label">
                                 <i class="fa fa-plus"></i>
                             </span>
-                            Tambah Teknisi
+                            Tambah Admin
                         </a>
                     </div>
                 </div>
@@ -35,10 +35,10 @@
                         <table id="add-row" class="display table table-striped table-hover" >
                             <thead>
                                 <tr>
-                                <th>Id Teknisi</th>
-                                <th>Nama Teknisi</th>
-                                <th>Email Teknisi</th>
-                                <th>Username Teknisi</th>
+                                <th>Id</th>
+                                <th>Nama</th>
+                                <th>Email</th>
+                                <th>Username</th>
                                 <th>Status</th>
                                 <th>Terdaftar Tanggal</th>
                                 <th>Action</th>
@@ -58,13 +58,13 @@
                                             <span class="badge badge-warning">Offline</span>
                                         <?php endif;?>
                                     </td>
-                                    <td><?= $row->user_datecreate;?></td>                                  
+                                    <td><?= $row->user_datecreate;?></td>                                   
                                     <td>
                                         <div class="form-button-action">
                                             <?php $user_id = $row->user_id;?>
-                                            <button type="button" data-toggle="tooltip" title="" class="btn-link"><a href="<?= base_url()?>admin/teknisi/edit_teknisi/<?= $user_id;?>"><i class="fa fa-edit"></i></a>                                             
+                                            <button type="button" data-toggle="tooltip" title="" class="btn-link"><a href="<?= base_url()?>managerumum/admin/edit_admin/<?= $user_id;?>"><i class="fa fa-edit"></i></a>                                             
                                             </button>
-                                            <button type="button" data-toggle="tooltip" title="" class="btn-link"><a id="tombol-hapus" href="<?= base_url()?>admin/teknisi/hapus_teknisi/<?= $user_id;?>"><i class="fa fa-times"></i></a>                   
+                                            <button type="button" data-toggle="tooltip" title="" class="btn-link"><a id="tombol-hapus" href="<?= base_url()?>managerumum/admin/hapus_admin/<?= $user_id;?>"><i class="fa fa-times"></i></a>                   
                                             </button>
                                         </div>
                                     </td>

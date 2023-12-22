@@ -59,20 +59,62 @@ $(document).on('click', '#tombol-hapus', function (e) {
     })
 });
 
-// tombol-setuju
-$(document).on('click', '#tombol-setuju', function (e) {
+// jadser-selesai
+$(document).on('click', '#jadser-selesai', function (e) {
 
     e.preventDefault();
     var link = $(this).attr('href');
 
     Swal.fire({
         title : 'Apakah Anda Yakin?',
-        text  : "Data Request Peminjaman Disetujui!",
+        text  : "Jadwal Service Selesai!",
         icon  : 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Ya, Setujui Data!'
+        confirmButtonText: 'Ya, Data Selesai!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.location.href = link;
+        }
+    })
+});
+
+// dokgampek-setuju
+$(document).on('click', '#dokgampek-setuju', function (e) {
+
+    e.preventDefault();
+    var link = $(this).attr('href');
+
+    Swal.fire({
+        title : 'Apakah Anda Yakin?',
+        text  : "Dokumentasi Pekerjaan Disetujui!",
+        icon  : 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, Data Disetujui!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.location.href = link;
+        }
+    })
+});
+
+// dokgampek-tolak
+$(document).on('click', '#dokgampek-tolak', function (e) {
+
+    e.preventDefault();
+    var link = $(this).attr('href');
+
+    Swal.fire({
+        title : 'Apakah Anda Yakin?',
+        text  : "Dokumentasi Pekerjaan Ditolak!",
+        icon  : 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, Data Ditolak!'
     }).then((result) => {
         if (result.isConfirmed) {
             document.location.href = link;
@@ -122,26 +164,26 @@ $(document).on('click', '#tombol-kembalikan', function (e) {
     })
 });
 
-// tombol-selesai
-$(document).on('click', '#tombol-selesai', function (e) {
+// // tombol-selesai
+// $(document).on('click', '#tombol-selesai', function (e) {
 
-    e.preventDefault();
-    var link = $(this).attr('href');
+//     e.preventDefault();
+//     var link = $(this).attr('href');
 
-    Swal.fire({
-        title : 'Apakah Anda Yakin?',
-        text  : "Data Peminjaman Selesai Dikembalikan!",
-        icon  : 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Ya, Kembalikan Data!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            document.location.href = link;
-        }
-    })
-});
+//     Swal.fire({
+//         title : 'Apakah Anda Yakin?',
+//         text  : "Data Peminjaman Selesai Dikembalikan!",
+//         icon  : 'warning',
+//         showCancelButton: true,
+//         confirmButtonColor: '#3085d6',
+//         cancelButtonColor: '#d33',
+//         confirmButtonText: 'Ya, Kembalikan Data!'
+//     }).then((result) => {
+//         if (result.isConfirmed) {
+//             document.location.href = link;
+//         }
+//     })
+// });
 
 // // tombol-tambah
 // $(document).on('click', '#tombol-tambah', function (e) {

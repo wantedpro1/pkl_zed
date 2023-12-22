@@ -41,15 +41,6 @@
                             </div>
                             <input type="password" name="user_password" class="form-control" placeholder="password">
                         </div>
-                        <div class="form-group">
-                            <label>Login Sebagai</label>
-                            <select name="user_role" class="form-control selectpicker">
-                                <option>--Pilih satu---</option>
-                                <option>SuperAdmin</option>
-                                <option>Admin</option>
-                                <option>Teknisi</option>
-                            </select>
-                        </div>
                         <div class="form-group text-right">
                             <button type="submit" class="btn btn-carolina">Login</button>
                         </div>

@@ -6,26 +6,26 @@ class Teknisi extends CI_Controller {
     public function __construct()
 	{
 		parent::__construct();
-        $this->load->model('admin/m_teknisi');
+        $this->load->model('managerumum/m_teknisi');
 	}
 
 	public function index()
 	{
 		$this->data['idbo'] = $this->session->userdata('ses_id');
 		$isi = [
-			'content'	=> 'admin/teknisi/data_teknisi',
+			'content'	=> 'managerumum/teknisi/data_teknisi',
 			'data'		=> $this->db->query("SELECT * FROM user WHERE user_role='Teknisi'")->result()
 		];
-		$this->load->view('admin/partial/dashboard', $isi);
+		$this->load->view('managerumum/partial/dashboard', $isi);
 	}
 
     public function tambah_teknisi()
 	{
 		$isi = [
-			'content'   => 'admin/teknisi/tambah_teknisi',
+			'content'   => 'managerumum/teknisi/tambah_teknisi',
 			'user_id'	=> $this->m_teknisi->user_id()
 		];
-		$this->load->view('admin/partial/dashboard', $isi);
+		$this->load->view('managerumum/partial/dashboard', $isi);
 	}
 
 	public function simpan_teknisi()
@@ -42,10 +42,10 @@ class Teknisi extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE) {
             $isi = [
-                'content'   => 'admin/teknisi/tambah_teknisi',
+                'content'   => 'managerumum/teknisi/tambah_teknisi',
                 'user_id'	=> $this->m_teknisi->user_id()
             ];
-            $this->load->view('admin/partial/dashboard', $isi);
+            $this->load->view('managerumum/partial/dashboard', $isi);
         } else {
             $data = array (
                 'user_id' 		    => $this->input->post('user_id'),
@@ -60,17 +60,17 @@ class Teknisi extends CI_Controller {
             $this->db->insert('user', $data);
             
             $this->session->set_flashdata('flashdata','Data Teknisi berhasil ditambahkan');
-            redirect('admin/teknisi');
+            redirect('managerumum/teknisi');
         }
 	}
 
 	public function edit_teknisi($id)
 	{
 		$isi = [
-			'content'   => 'admin/teknisi/edit_teknisi',
+			'content'   => 'managerumum/teknisi/edit_teknisi',
 			'data'		=> $this->m_teknisi->edit($id)
 		];
-		$this->load->view('admin/partial/dashboard', $isi);
+		$this->load->view('managerumum/partial/dashboard', $isi);
 	}
 
 	public function update_teknisi()
@@ -87,10 +87,10 @@ class Teknisi extends CI_Controller {
 		$id = $this->input->post('user_id');
         if ($this->form_validation->run() == FALSE) {
             $isi = [
-				'content'   => 'admin/teknisi/edit_teknisi',
+				'content'   => 'managerumum/teknisi/edit_teknisi',
 				'data'		=> $this->m_teknisi->edit($id)
 			];
-            $this->load->view('admin/partial/dashboard', $isi);
+            $this->load->view('managerumum/partial/dashboard', $isi);
         } else {
 
 			if ($cek_username->num_rows() == 0) {
@@ -102,7 +102,7 @@ class Teknisi extends CI_Controller {
 			    $this->m_teknisi->update($user_id, $data);
                 
                 $this->session->set_flashdata('flashdata','Data Teknisi berhasil diupdate');
-                redirect('admin/teknisi');
+                redirect('managerumum/teknisi');
 
             } else if (($cek_username->num_rows() == 1) && ($user_username == $user_usernameold)) {
                 $data = array (
@@ -112,15 +112,15 @@ class Teknisi extends CI_Controller {
 			    $this->m_teknisi->updateprofil($user_id, $data);
                 
                 $this->session->set_flashdata('flashdata','Data Teknisi berhasil diupdate');
-                redirect('admin/teknisi');
+                redirect('managerumum/teknisi');
 
             } else {
                 $this->session->set_flashdata('flashdata','Username telah terdaftar sebelumnya');
 			    $isi = [
-					'content'   => 'admin/teknisi/edit_teknisi',
+					'content'   => 'managerumum/teknisi/edit_teknisi',
 					'data'		=> $this->m_teknisi->edit($id)
 				];
-				$this->load->view('admin/partial/dashboard', $isi);
+				$this->load->view('managerumum/partial/dashboard', $isi);
             }
         }
 	}
@@ -129,6 +129,6 @@ class Teknisi extends CI_Controller {
 	{
 		$this->m_teknisi->hapus_teknisi($id);
 		$this->session->set_flashdata('flashdata','Data Teknisi berhasil dihapus');
-		redirect('admin/teknisi');
+		redirect('managerumum/teknisi');
 	}
 }

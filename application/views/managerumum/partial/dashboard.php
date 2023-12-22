@@ -93,13 +93,13 @@
 											<div class="u-text">
 												<h4><?= $data_admin['user_nama'] ?></h4>
 												<p class="text-muted"><?= $data_admin['user_role'] ?></p>
-												<a href="<?= site_url('admin/profil') ?>" class="btn btn-xs btn-secondary btn-sm">Lihat Profil</a>
+												<a href="<?= site_url('managerumum/profil') ?>" class="btn btn-xs btn-secondary btn-sm">Lihat Profil</a>
 											</div>
 										</div>
 									</li>
 									<li>
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="<?= site_url('admin/profil/settings') ?>">Pengaturan</a>
+										<a class="dropdown-item" href="<?= site_url('managerumum/profil/settings') ?>">Pengaturan</a>
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" id="tombol-logout" href="<?= site_url('login/logout') ?>">Logout</a>
 									</li>
@@ -131,25 +131,31 @@
 					</div>
 					<ul class="nav nav-primary">
                         <li class="nav-item">
-							<a href="<?= site_url('admin/dashboard') ?>">
+							<a href="<?= site_url('managerumum/dashboard') ?>">
 								<i class="fas fa-home"></i>
 								<p>Dashboard</p>
 							</a>
 						</li>
                         <li class="nav-item">
-							<a href="<?= site_url('admin/teknisi') ?>">
+							<a href="<?= site_url('managerumum/admin') ?>">
+								<i class="fas fa-users"></i>
+								<p>Kelola Data Admin</p>
+							</a>
+						</li>
+                        <li class="nav-item">
+							<a href="<?= site_url('managerumum/teknisi') ?>">
 								<i class="fas fa-wrench"></i>
 								<p>Kelola Data Teknisi</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?= site_url('admin/jadser') ?>">
+							<a href="<?= site_url('managerumum/jadser') ?>">
 								<i class="fas fa-toolbox"></i>
 								<p>Jadwal Service</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?= site_url('admin/dokgampek') ?>">
+							<a href="<?= site_url('managerumum/dokgampek') ?>">
 								<i class="fas fa-image"></i>
 								<p>Dokumentasi Pekerjaan</p>
 							</a>
@@ -166,6 +172,25 @@
 			</div>
 			<footer class="footer">
 				<div class="container-fluid">
+					<!-- <nav class="pull-left">
+						<ul class="nav">
+							<li class="nav-item">
+								<a class="nav-link" href="https://www.themekita.com">
+									ThemeKita
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									Help
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									Licenses
+								</a>
+							</li>
+						</ul>
+					</nav> -->
 					<div class="copyright ml-auto">
 						&copy; <?= date('Y') ?> PKL Zed. All rights reserved.
 					</div>				
@@ -216,6 +241,100 @@
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
 	<script src="<?= base_url(); ?>assets/dashboard/js/setting-demo.js"></script>
 	<script src="<?= base_url(); ?>assets/dashboard/js/demo.js"></script>
+	<script>
+		Circles.create({
+			id:'circles-1',
+			radius:45,
+			value:60,
+			maxValue:100,
+			width:7,
+			text: 5,
+			colors:['#f1f1f1', '#FF9E27'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		})
+
+		Circles.create({
+			id:'circles-2',
+			radius:45,
+			value:70,
+			maxValue:100,
+			width:7,
+			text: 36,
+			colors:['#f1f1f1', '#2BB930'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		})
+
+		Circles.create({
+			id:'circles-3',
+			radius:45,
+			value:40,
+			maxValue:100,
+			width:7,
+			text: 12,
+			colors:['#f1f1f1', '#F25961'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		})
+
+		var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
+
+		var mytotalIncomeChart = new Chart(totalIncomeChart, {
+			type: 'bar',
+			data: {
+				labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
+				datasets : [{
+					label: "Total Income",
+					backgroundColor: '#ff9e27',
+					borderColor: 'rgb(23, 125, 255)',
+					data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
+				}],
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				legend: {
+					display: false,
+				},
+				scales: {
+					yAxes: [{
+						ticks: {
+							display: false //this will remove only the label
+						},
+						gridLines : {
+							drawBorder: false,
+							display : false
+						}
+					}],
+					xAxes : [ {
+						gridLines : {
+							drawBorder: false,
+							display : false
+						}
+					}]
+				},
+			}
+		});
+
+		$('#lineChart').sparkline([105,103,123,100,95,105,115], {
+			type: 'line',
+			height: '70',
+			width: '100%',
+			lineWidth: '2',
+			lineColor: '#ffa534',
+			fillColor: 'rgba(255, 165, 52, .14)'
+		});
+	</script>
 	<script >
 		$(document).ready(function() {
 			$('#basic-datatables').DataTable({
@@ -264,5 +383,20 @@
 			});
 		});
 	</script>
+	<!-- <script>
+		$(document).ready(function(){
+			$("#merk_saja").hide();
+
+			loadmerk();
+
+		});
+
+		function loadmerk() {
+			$("#jenpek_saja").change(function(){
+				
+			})
+			var get
+		}
+	</script> -->
 </body>
 </html>
