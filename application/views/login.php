@@ -9,7 +9,7 @@
     <title>CV. KADANG BAYU - Halaman Login</title>
 
     <!-- Core Styles -->
-    <link rel="stylesheet" href="<?= base_url(); ?>assets/loginold/css/siqtheme.css">
+    <link rel="stylesheet" href="<?= base_url(); ?>assets/login/css/siqtheme.css">
 
     <link rel="apple-touch-icon" sizes="76x76" href="<?= base_url(); ?>assets/logo/image.png">
     <link rel="icon" type="image/png" sizes="96x96" href="<?= base_url(); ?>assets/logo/image.png">
@@ -22,12 +22,12 @@
         <div class="d-flex justify-content-center mt-5">
             <div class="card" id="login-card">
                 <div class="card-body text-center">
-                    <h3><span class="text-carolina bold">CV. </span>KADANG BAYU</h3>
+                    <h3>Sistem Manajemen Layanan Elektronik<br><span class="text-carolina bold"> CV. Kadang Bayu</span></h3>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="<?= base_url('login/auth')?>" enctype="multipart/form-data">
                         <div class="text-center pb-3">
-                            <h5 class="text-center bold">Sign-In</h5>
+                            <h5 class="text-center bold">Masuk ke Sistem</h5>
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -59,8 +59,8 @@
         </div>
     </div>
 
-    <script src="<?= base_url(); ?>assets/loginold/scripts/siqtheme.js"></script>
-    <script src="<?= base_url(); ?>assets/loginold/scripts/pages/pg_login.js" type="text/javascript"></script>
+    <script src="<?= base_url(); ?>assets/login/scripts/siqtheme.js"></script>
+    <script src="<?= base_url(); ?>assets/login/scripts/pages/pg_login.js" type="text/javascript"></script>
 
     <!-- Sweet Alert 2 -->
 	<script src="<?= base_url(); ?>assets/script/sweetalert2.all.min.js"></script>

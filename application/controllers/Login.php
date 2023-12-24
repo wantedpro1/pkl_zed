@@ -25,7 +25,9 @@ class Login extends CI_Controller
 			$this->session->set_userdata('masuk',true);
 			$xcakun  = $cakun->row_array();
             $user_id = $xcakun['user_id'];
+			$user_nama = $xcakun['user_nama'];
             $this->session->set_userdata('user_id',$user_id);
+			$this->session->set_userdata('user_nama',$user_nama);
 
 			if(($xcakun['user_role'] == 'Manager Umum')){
                 $this->m_login->updateactive($user_id, $data);

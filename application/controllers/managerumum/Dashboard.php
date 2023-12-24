@@ -7,13 +7,15 @@ class Dashboard extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('m_login');
+        $this->load->model('managerumum/m_dashboard');
 	}
 
     public function index()
     {
         $this->data['idbo'] = $this->session->userdata('ses_id');
         $isi = [
-            'm_login'    => $this->load->model('m_login'),
+            'pekerjaanMasuk'	=> $this->m_dashboard->getPmThn(),
+            'pekerjaanSelesai'	=> $this->m_dashboard->getPsThn(),
         ];
         $this->load->view('managerumum/dashboard', $isi);
     }

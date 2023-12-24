@@ -52,9 +52,9 @@ class Profil extends CI_Controller {
             $user_username    = $this->input->post('user_username');
             $cek_username     = $this->m_profil->cekusername($user_username);
 			
-			$config['upload_path'] 		= './assets/profil/';  //path folder
-			$config['allowed_types'] 	= 'jpg|png|jpeg'; 						//type yang dapat diakses bisa anda sesuaikan
-			$config['encrypt_name'] 	= TRUE; 								//nama yang terupload nantinya
+			$config['upload_path'] 		= './assets/profil/';   //path folder
+			$config['allowed_types'] 	= 'jpg|png|jpeg'; 	    //type yang dapat diakses bisa anda sesuaikan
+			$config['encrypt_name'] 	= TRUE; 				//nama yang terupload nantinya
 			$config['max_size'] 		= 5120;
 
 			// Inisiasi Upload
@@ -63,14 +63,15 @@ class Profil extends CI_Controller {
 
 			// Upload Dokumen
 			if ($this->upload->do_upload('user_picture')) {
-				$data['user_picture'] = $this->upload->data('file_name');
-			}           
+				$user_picture = $this->upload->data('file_name');
+			} 
 
             if ($cek_username->num_rows() == 0) {
                 $data = array (
                     'user_nama' 		=> $this->input->post('user_nama') ,
                     'user_email' 	    => $this->input->post('user_email') ,
-                    'user_username' 	=> $this->input->post('user_username')
+                    'user_username' 	=> $this->input->post('user_username') ,
+                    'user_picture' 	    => $user_picture 
                 );
 			    $this->m_profil->updateprofil($user_id, $data);
                 
@@ -80,7 +81,8 @@ class Profil extends CI_Controller {
             } else if (($cek_username->num_rows() == 1) && ($user_username == $user_usernameold)) {
                 $data = array (
                     'user_nama' 		=> $this->input->post('user_nama') ,
-                    'user_email' 	    => $this->input->post('user_email')
+                    'user_email' 	    => $this->input->post('user_email') ,
+                    'user_picture' 	    => $user_picture 
                 );
 			    $this->m_profil->updateprofil($user_id, $data);
                 

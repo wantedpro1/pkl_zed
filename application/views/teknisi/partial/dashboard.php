@@ -4,7 +4,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>SIAK - Halaman Dashboard</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-	<link rel="icon" href="<?= base_url(); ?>assets/dashboard/img/icon.ico" type="image/x-icon"/>
+	<link rel="icon" href="<?= base_url(); ?>assets/logo/image.png" type="image/x-icon"/>
 
 	<!-- Fonts and icons -->
 	<script src="<?= base_url(); ?>assets/dashboard/js/plugin/webfont/webfont.min.js"></script>
@@ -32,7 +32,7 @@
       if (!$user_id) {
         redirect('login');
       } else {
-        $data_teknisi = $this->db->query("SELECT * FROM user WHERE user_id='$user_id'")->row_array();
+        $data_admin = $this->db->query("SELECT * FROM user WHERE user_id='$user_id'")->row_array();
 
         $timeout = 1; // setting timeout dalam menit
         $logout = site_url('login'); // redirect halaman logout
@@ -56,7 +56,7 @@
 			<div class="logo-header" data-background-color="blue">
 				
 				<a href="index.html" class="logo">
-					<img src="<?= base_url(); ?>assets/dashboard/img/logo.svg" alt="navbar brand" class="navbar-brand">
+					<img src="<?= base_url(); ?>assets/logo/image.png" alt="navbar brand" class="navbar-brand" style="max-width: 45px">
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
@@ -80,28 +80,26 @@
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 								<div class="avatar-sm">
-									<img src="<?= base_url(); ?>assets/dashboard/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+									<img src="<?= base_url()?>assets/profil/<?= $data_admin['user_picture'];?>". alt="#" class="avatar-img rounded-circle">
 								</div>
 							</a>
 							<ul class="dropdown-menu dropdown-user animated fadeIn">
 								<div class="dropdown-user-scroll scrollbar-outer">
 									<li>
 										<div class="user-box">
-											<div class="avatar-lg"><img src="<?= base_url(); ?>assets/dashboard/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
+											<div class="avatar-lg">
+												<img src="<?= base_url()?>assets/profil/<?= $data_admin['user_picture'];?>" alt="#" class="avatar-img rounded">
+											</div>
 											<div class="u-text">
-												<h4><?= $data_teknisi['user_nama'] ?></h4>
-												<p class="text-muted"><?= $data_teknisi['user_email'] ?></p>
-												<a href="<?= site_url('teknisi/settings') ?>" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+												<h4><?= $data_admin['user_nama'] ?></h4>
+												<p class="text-muted"><?= $data_admin['user_role'] ?></p>
+												<a href="<?= site_url('teknisi/profil') ?>" class="btn btn-xs btn-secondary btn-sm">Lihat Profil</a>
 											</div>
 										</div>
 									</li>
 									<li>
-										<!-- <div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">My Profile</a>
-										<a class="dropdown-item" href="#">My Balance</a>
-										<a class="dropdown-item" href="#">Inbox</a> -->
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="<?= site_url('teknisi/settings') ?>">Account Setting</a>
+										<a class="dropdown-item" href="<?= site_url('teknisi/profil/settings') ?>">Pengaturan</a>
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" id="tombol-logout" href="<?= site_url('login/logout') ?>">Logout</a>
 									</li>
@@ -120,44 +118,15 @@
 				<div class="sidebar-content">
 					<div class="user">
 						<div class="avatar-sm float-left mr-2">
-							<img src="<?= base_url(); ?>assets/dashboard/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+							<img src="<?= base_url()?>assets/profil/<?= $data_admin['user_picture'];?>" alt="#" class="avatar-img rounded-circle">
 						</div>
 						<div class="info">
 							<a>
 								<span>
-									<?= $data_teknisi['user_nama'] ?>
-									<span class="user-level"><?= $data_teknisi['user_role'] ?></span>
+									<?= $data_admin['user_nama'] ?>
+									<span class="user-level"><?= $data_admin['user_role'] ?></span>
 								</span>
 							</a>
-						
-							<!-- <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
-								<span>
-									Hizrian
-									<span class="user-level">teknisi</span>
-									<span class="caret"></span>
-								</span>
-							</a> -->
-							<!-- <div class="clearfix"></div>
-
-							<div class="collapse in" id="collapseExample">
-								<ul class="nav">
-									<li>
-										<a href="#profile">
-											<span class="link-collapse">My Profile</span>
-										</a>
-									</li>
-									<li>
-										<a href="#edit">
-											<span class="link-collapse">Edit Profile</span>
-										</a>
-									</li>
-									<li>
-										<a href="#settings">
-											<span class="link-collapse">Settings</span>
-										</a>
-									</li>
-								</ul>
-							</div> -->
 						</div>
 					</div>
 					<ul class="nav nav-primary">
@@ -167,22 +136,10 @@
 								<p>Dashboard</p>
 							</a>
 						</li>
-                        <li class="nav-item">
-							<a href="<?= site_url('teknisi/nopel') ?>">
-								<i class="fas fa-wrench"></i>
-								<p>Nota Pelanggan</p>
-							</a>
-						</li>
 						<li class="nav-item">
-							<a href="<?= site_url('teknisi/garansi') ?>">
-								<i class="fas fa-user"></i>
-								<p>Kartu Garansi</p>
-							</a>
-						</li>
-                        <li class="nav-item">
-							<a href="<?= site_url('teknisi/kerja') ?>">
-								<i class="fas fa-file"></i>
-								<p>Hasil Kerja</p>
+							<a href="<?= site_url('teknisi/dokgampek') ?>">
+								<i class="fas fa-image"></i>
+								<p>Dokumentasi Pekerjaan</p>
 							</a>
 						</li>
 					</ul>
@@ -197,27 +154,8 @@
 			</div>
 			<footer class="footer">
 				<div class="container-fluid">
-					<nav class="pull-left">
-						<ul class="nav">
-							<li class="nav-item">
-								<a class="nav-link" href="https://www.themekita.com">
-									ThemeKita
-								</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">
-									Help
-								</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">
-									Licenses
-								</a>
-							</li>
-						</ul>
-					</nav>
 					<div class="copyright ml-auto">
-						2018, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">ThemeKita</a>
+						&copy; <?= date('Y') ?> PKL Zed. All rights reserved.
 					</div>				
 				</div>
 			</footer>
@@ -262,104 +200,6 @@
 	<!-- Atlantis JS -->
 	<script src="<?= base_url(); ?>assets/dashboard/js/atlantis.min.js"></script>
 	
-
-	<!-- Atlantis DEMO methods, don't include it in your project! -->
-	<script src="<?= base_url(); ?>assets/dashboard/js/setting-demo.js"></script>
-	<script src="<?= base_url(); ?>assets/dashboard/js/demo.js"></script>
-	<script>
-		Circles.create({
-			id:'circles-1',
-			radius:45,
-			value:60,
-			maxValue:100,
-			width:7,
-			text: 5,
-			colors:['#f1f1f1', '#FF9E27'],
-			duration:400,
-			wrpClass:'circles-wrp',
-			textClass:'circles-text',
-			styleWrapper:true,
-			styleText:true
-		})
-
-		Circles.create({
-			id:'circles-2',
-			radius:45,
-			value:70,
-			maxValue:100,
-			width:7,
-			text: 36,
-			colors:['#f1f1f1', '#2BB930'],
-			duration:400,
-			wrpClass:'circles-wrp',
-			textClass:'circles-text',
-			styleWrapper:true,
-			styleText:true
-		})
-
-		Circles.create({
-			id:'circles-3',
-			radius:45,
-			value:40,
-			maxValue:100,
-			width:7,
-			text: 12,
-			colors:['#f1f1f1', '#F25961'],
-			duration:400,
-			wrpClass:'circles-wrp',
-			textClass:'circles-text',
-			styleWrapper:true,
-			styleText:true
-		})
-
-		var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
-
-		var mytotalIncomeChart = new Chart(totalIncomeChart, {
-			type: 'bar',
-			data: {
-				labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
-				datasets : [{
-					label: "Total Income",
-					backgroundColor: '#ff9e27',
-					borderColor: 'rgb(23, 125, 255)',
-					data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
-				}],
-			},
-			options: {
-				responsive: true,
-				maintainAspectRatio: false,
-				legend: {
-					display: false,
-				},
-				scales: {
-					yAxes: [{
-						ticks: {
-							display: false //this will remove only the label
-						},
-						gridLines : {
-							drawBorder: false,
-							display : false
-						}
-					}],
-					xAxes : [ {
-						gridLines : {
-							drawBorder: false,
-							display : false
-						}
-					}]
-				},
-			}
-		});
-
-		$('#lineChart').sparkline([105,103,123,100,95,105,115], {
-			type: 'line',
-			height: '70',
-			width: '100%',
-			lineWidth: '2',
-			lineColor: '#ffa534',
-			fillColor: 'rgba(255, 165, 52, .14)'
-		});
-	</script>
 	<script >
 		$(document).ready(function() {
 			$('#basic-datatables').DataTable({

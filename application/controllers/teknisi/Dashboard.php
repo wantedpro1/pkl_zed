@@ -11,10 +11,7 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
-        $this->data['idbo'] = $this->session->userdata('ses_id');
-        $isi = [
-            'm_login'    => $this->load->model('m_login'),
-        ];
-        $this->load->view('teknisi/dashboard', $isi);
+        $user_id = $this->session->userdata('user_id');
+        $this->load->view('teknisi/dashboard');
     }
 }

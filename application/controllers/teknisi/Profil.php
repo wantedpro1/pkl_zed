@@ -6,27 +6,27 @@ class Profil extends CI_Controller {
     public function __construct()
 	{
 		parent::__construct();
-        $this->load->model('admin/m_profil');
+        $this->load->model('teknisi/m_profil');
 	}
 
 	public function index()
 	{
 		$user_id = $this->session->userdata('user_id');
 		$isi = [
-			'content'	=> 'admin/profil/detail_profil',
+			'content'	=> 'teknisi/profil/detail_profil',
 			'data'		=> $this->db->query("SELECT * FROM user WHERE user_id='$user_id'")->row_array()
 		];
-		$this->load->view('admin/partial/dashboard', $isi);
+		$this->load->view('teknisi/partial/dashboard', $isi);
 	}
 
     public function settings()
 	{
 		$user_id = $this->session->userdata('user_id');
 		$isi = [
-			'content'	=> 'admin/profil/setting_profil',
+			'content'	=> 'teknisi/profil/setting_profil',
 			'data'		=> $this->db->query("SELECT * FROM user WHERE user_id='$user_id'")->row_array()
 		];
-		$this->load->view('admin/partial/dashboard', $isi);
+		$this->load->view('teknisi/partial/dashboard', $isi);
 	}
 
 	public function update_profil()
@@ -43,10 +43,10 @@ class Profil extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE) {
 			$isi = [
-				'content'	=> 'admin/profil/setting_profil',
+				'content'	=> 'teknisi/profil/setting_profil',
 				'data'		=> $this->db->query("SELECT * FROM user WHERE user_id='$user_id'")->row_array()
 			];
-			$this->load->view('admin/partial/dashboard', $isi);
+			$this->load->view('teknisi/partial/dashboard', $isi);
         } else {
             $user_usernameold = $this->input->post('user_usernameold');
             $user_username    = $this->input->post('user_username');
@@ -76,7 +76,7 @@ class Profil extends CI_Controller {
 			    $this->m_profil->updateprofil($user_id, $data);
                 
                 $this->session->set_flashdata('flashdata','Data Pengguna berhasil diupdate');
-                redirect('admin/dashboard');
+                redirect('teknisi/dashboard');
 
             } else if (($cek_username->num_rows() == 1) && ($user_username == $user_usernameold)) {
                 $data = array (
@@ -87,11 +87,11 @@ class Profil extends CI_Controller {
 			    $this->m_profil->updateprofil($user_id, $data);
                 
                 $this->session->set_flashdata('flashdata','Data Pengguna berhasil diupdate');
-                redirect('admin/dashboard');
+                redirect('teknisi/dashboard');
 
             } else {
                 $this->session->set_flashdata('flashdata','Username telah terdaftar sebelumnya');
-			    redirect('admin/profil/settings');
+			    redirect('teknisi/profil/settings');
             }
         }
     }
@@ -110,10 +110,10 @@ class Profil extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE) {
             $isi = [
-				'content'	=> 'admin/profil/setting_profil',
+				'content'	=> 'teknisi/profil/setting_profil',
 				'data'		=> $this->db->query("SELECT * FROM user WHERE user_id='$user_id'")->row_array()
 			];
-			$this->load->view('admin/partial/dashboard', $isi);
+			$this->load->view('teknisi/partial/dashboard', $isi);
         } else {
             $user_username 		  = $this->input->post('user_username');
             $user_password 		  = $this->input->post('user_password');
@@ -128,16 +128,16 @@ class Profil extends CI_Controller {
                     ];
                     $this->m_profil->updatepassword($user_username, $data);
                     $this->session->set_flashdata('flashdata','Password Berhasil Diganti');
-                    redirect('admin/dashboard');
+                    redirect('teknisi/dashboard');
                 }
                 else {
                     $this->session->set_flashdata('flashdata','Password Baru atau Konfirmasi Password tidak sama');
-                    redirect('admin/profil/settings');
+                    redirect('teknisi/profil/settings');
                 }
             }
             else {
                 $this->session->set_flashdata('flashdata','Password Lama tidak sesuai');
-                redirect('admin/profil/settings');
+                redirect('teknisi/profil/settings');
             }
         }
     }
