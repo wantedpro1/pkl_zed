@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>SIAK - Halaman Dashboard</title>
+	<title>SMALENIK - Teknisi</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="<?= base_url(); ?>assets/logo/image.png" type="image/x-icon"/>
 

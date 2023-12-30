@@ -100,7 +100,7 @@ class Profil extends CI_Controller {
 	{
 		$this->form_validation->set_rules('user_passwordold', 'Password Lama', 'required|min_length[8]|max_length[30]');
         $this->form_validation->set_rules('user_passwordnew', 'Password Baru', 'required|min_length[8]|max_length[30]');
-		$this->form_validation->set_rules('user_passwordconfnew', 'Konfirmasi Password Baru', 'required|min_length[8]|max_length[30]');
+		$this->form_validation->set_rules('user_passwordconfnew', 'Konfirmasi Password Baru', 'required|max_length[30]');
 
 		$this->form_validation->set_message('required', '*{field} masih kosong. Silahkan diisi.');
 		$this->form_validation->set_message('max_length', '*{field} tidak boleh lebih dari {param} karakter.');

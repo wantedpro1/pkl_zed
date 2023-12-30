@@ -7,6 +7,7 @@ class Dokgampek extends CI_Controller {
 	{
 		parent::__construct();
         $this->load->model('managerumum/m_dokgampek');
+		$this->load->library('zip');
 	}
 
 	public function index()
@@ -41,6 +42,36 @@ class Dokgampek extends CI_Controller {
 		$data['dokgampek_status'] = 2;
         $this->m_dokgampek->update($id, $data);
 		$this->session->set_flashdata('flashdata','Dokumentasi Pekerjaan berhasil ditolak');
+		redirect('managerumum/dokgampek');
+	}
+
+	public function download_global()
+	{
+		$directory 		= './assets/dokumentasi/';
+		$filename		= 'rekap_dokumentasi';
+
+		$this->zip->read_dir($directory, FALSE);
+		$this->zip->download($filename);
+	
+		redirect('managerumum/dokgampek');
+	}
+
+	public function download_dokgampek($id)
+	{
+		$data_dokgampek			= $this->db->query("SELECT * FROM dokgampek WHERE dokgampek_id='$id'")->row_array();
+
+		$jadser_id				= $data_dokgampek['jadser_id'];
+		$dokgampek_datecreate	= $data_dokgampek['dokgampek_datecreate'];
+		$datecreate				= str_replace( ':', '.', $dokgampek_datecreate);
+		$dokgampek_nama			= $data_dokgampek['dokgampek_nama'];
+
+		$lokasi = $jadser_id.' '.$datecreate.' - '.$dokgampek_nama;
+		$directory 		= './assets/dokumentasi/'.$lokasi.'/';  //path folder
+		$filename		= $lokasi;
+
+		$this->zip->read_dir($directory, FALSE);
+		$this->zip->download($filename);
+	
 		redirect('managerumum/dokgampek');
 	}
 

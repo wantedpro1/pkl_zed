@@ -27,6 +27,12 @@
                             </span>
                             Tambah Dokumentasi
                         </a>
+                        <a class="btn btn-success ml-1" href="<?= base_url('managerumum/dokgampek/download_global')?>">
+                            <span class="btn-label">
+                                <i class="fa fa-download"></i>
+                            </span>
+                            Download Dokumentasi
+                        </a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -60,6 +66,8 @@
                                     <td><?= $row->dokgampek_datecreate;?></td>                                   
                                     <td>
                                         <div class="form-button-action">
+                                            <button type="button" data-toggle="tooltip" title="" class="btn-link"><a href="<?= base_url()?>managerumum/dokgampek/download_dokgampek/<?= $dokgampek_id;?>"><i class="fa fa-download"></i></a>                   
+                                            </button>   
                                             <button type="button" data-toggle="tooltip" title="" class="btn-link"><a href="<?= base_url()?>managerumum/dokgampek/detail_dokgampek/<?= $dokgampek_id;?>"><i class="fa fa-eye"></i></a>
                                             </button>
                                             <button type="button" data-toggle="tooltip" title="" class="btn-link"><a href="<?= base_url()?>managerumum/dokgampek/edit_dokgampek/<?= $dokgampek_id;?>"><i class="fa fa-edit"></i></a>                                             
