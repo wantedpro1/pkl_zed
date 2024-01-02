@@ -41,7 +41,7 @@
                                
                                 <div class="form-group mb-3 <?= form_error('user_email') ? 'has-error' : null?>">
                                     <label for="email_admin">Email</label>
-                                    <input type="email" name="user_email" value="<?= set_value('user_email')?>" class="form-control" id="email_admin" placeholder="Masukkan Email">
+                                    <input type="text" name="user_email" value="<?= set_value('user_email')?>" class="form-control" id="email_admin" placeholder="Masukkan Email">
                                     <small class="form-text text-muted">Kami tidak akan pernah menyebarkan emailmu ke orang lain.</small>
                                     <small style="color: red;"><?= form_error('user_email')?></small>
                                 </div>

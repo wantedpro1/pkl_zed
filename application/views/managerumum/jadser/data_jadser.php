@@ -35,6 +35,7 @@
                         <table id="add-row" class="display table table-striped table-hover" >
                             <thead>
                                 <tr>
+                                <th>ID Jadwal Service</th>
                                 <th>Nama Pelanggan</th>
                                 <th>Jenis Pekerjaan</th>
                                 <th>Merk Barang</th>
@@ -48,6 +49,7 @@
                             <?php foreach ($data as $row) { ?>
                                 <tr>
                                     <?php $jadser_id = $row->jadser_id;?>
+                                    <td><?= $jadser_id;?></td>
                                     <td><?= $row->jadser_nama;?></td>
                                     <td><?= $row->jadser_jenpek;?></td>
                                     <td><?= $row->jadser_merk;?></td>
@@ -58,6 +60,8 @@
                                             <span class="badge badge-primary">Proses Perbaikan</span>
                                         <?php elseif($row->jadser_status == '1'):?>
                                             <span class="badge badge-warning">Selesai</span>
+                                            <?php elseif($row->jadser_status == '2'):?>
+                                            <span class="badge badge-danger">Dibatalkan</span>
                                         <?php endif;?>
                                     </td>                             
                                     <td>
@@ -68,6 +72,8 @@
                                             </button>
                                             <?php if($row->jadser_status == '0'):?>
                                                 <button type="button" data-toggle="tooltip" title="" class="btn-link"><a id="jadser-selesai" href="<?= base_url()?>managerumum/jadser/selesai_jadser/<?= $jadser_id;?>"><i class="fa fa-check"></i></a>                   
+                                                </button>
+                                                <button type="button" data-toggle="tooltip" title="" class="btn-link"><a id="jadser-batal" href="<?= base_url()?>managerumum/jadser/batal_jadser/<?= $jadser_id;?>"><i class="fa fa-times"></i></a>                   
                                                 </button>
                                             <?php endif;?>
                                             <button type="button" data-toggle="tooltip" title="" class="btn-link"><a id="tombol-hapus" href="<?= base_url()?>managerumum/jadser/hapus_jadser/<?= $jadser_id;?>"><i class="fa fa-trash"></i></a>                   

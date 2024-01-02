@@ -36,6 +36,14 @@ class Jadser extends CI_Controller {
 		redirect('admin/jadser');
 	}
 
+    public function batal_jadser($id)
+	{
+		$data['jadser_status'] = 2;
+        $this->m_jadser->update($id, $data);
+		$this->session->set_flashdata('flashdata','Jadwal Service berhasil dibatalkan');
+		redirect('managerumum/jadser');
+	}
+
     public function tambah_jadser()
 	{
 		$isi = [
@@ -49,7 +57,7 @@ class Jadser extends CI_Controller {
 	public function simpan_jadser()
 	{
         $this->form_validation->set_rules('jadser_nama', 'Nama Pelanggan', 'required|min_length[1]|max_length[255]');
-        $this->form_validation->set_rules('jadser_notelp', 'No Telepon', 'min_length[1]|max_length[15]');
+        $this->form_validation->set_rules('jadser_notelp', 'No Telepon', 'is_natural|min_length[1]|max_length[15]');
         $this->form_validation->set_rules('jadser_alamat', 'Alamat Pengguna', 'required|min_length[1]|max_length[1000]');
         $this->form_validation->set_rules('jadser_jenpek', 'Jenis Pekerjaan', 'required');
 		$this->form_validation->set_rules('jadser_merk', 'Merk Barang', 'required|min_length[1]|max_length[255]');
@@ -61,6 +69,7 @@ class Jadser extends CI_Controller {
 		$this->form_validation->set_message('required', '*{field} masih kosong. Silahkan diisi.');
 		$this->form_validation->set_message('max_length', '*{field} tidak boleh lebih dari {param} karakter.');
 		$this->form_validation->set_message('min_length', '*{field} setidaknya harus memiliki {param} karakter.');
+        $this->form_validation->set_message('is_natural', '*{field} harus berupa angka.');
 
         $user_id    = $this->session->userdata('user_id');
 		$data_user = $this->db->query("SELECT * FROM user WHERE user_id='$user_id'")->row_array();
@@ -108,7 +117,7 @@ class Jadser extends CI_Controller {
     public function update_jadser()
 	{
 		$this->form_validation->set_rules('jadser_nama', 'Nama Pelanggan', 'required|min_length[1]|max_length[255]');
-        $this->form_validation->set_rules('jadser_notelp', 'No Telepon', 'min_length[1]|max_length[15]');
+        $this->form_validation->set_rules('jadser_notelp', 'No Telepon', 'is_natural|min_length[1]|max_length[15]');
         $this->form_validation->set_rules('jadser_alamat', 'Alamat Pengguna', 'required|min_length[1]|max_length[1000]');
 		$this->form_validation->set_rules('jadser_merk', 'Merk Barang', 'required|min_length[1]|max_length[255]');
         $this->form_validation->set_rules('jadser_jenbar', 'Jenis Barang', 'required|min_length[1]|max_length[255]');
@@ -119,6 +128,7 @@ class Jadser extends CI_Controller {
 		$this->form_validation->set_message('required', '*{field} masih kosong. Silahkan diisi.');
 		$this->form_validation->set_message('max_length', '*{field} tidak boleh lebih dari {param} karakter.');
 		$this->form_validation->set_message('min_length', '*{field} setidaknya harus memiliki {param} karakter.');
+        $this->form_validation->set_message('is_natural', '*{field} harus berupa angka.');
 
         $id = $this->input->post('jadser_id');
         if ($this->form_validation->run() == FALSE) {

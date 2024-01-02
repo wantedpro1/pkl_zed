@@ -31,7 +31,20 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6 col-lg-12">
-                                <input type="hidden" name="jadser_id" value="<?= $data['jadser_id'];?>" class="form-control" readonly>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-6">
+                                        <div class="form-group mb-3">
+                                            <label>ID Jadwal Service</label>
+                                            <input type="text" name="jadser_id" value="<?= $data['jadser_id'];?>" class="form-control" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <div class="form-group mb-3">
+                                            <label>Ditambahkan Tanggal</label>
+                                            <input type="datetime" value="<?= $data['jadser_datecreate'];?>" class="form-control" readonly>
+                                        </div>
+                                    </div>
+                                </div>
                                 
                                 <div class="row">
                                     <div class="col-md-6 col-lg-6">

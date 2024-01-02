@@ -72,7 +72,28 @@ $(document).on('click', '#jadser-selesai', function (e) {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Ya, Data Selesai!'
+        confirmButtonText: 'Ya, Jadwal Selesai!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.location.href = link;
+        }
+    })
+});
+
+// jadser-batal
+$(document).on('click', '#jadser-batal', function (e) {
+
+    e.preventDefault();
+    var link = $(this).attr('href');
+
+    Swal.fire({
+        title : 'Apakah Anda Yakin?',
+        text  : "Jadwal Service Dibatalkan!",
+        icon  : 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, Jadwal Dibatalkan!'
     }).then((result) => {
         if (result.isConfirmed) {
             document.location.href = link;

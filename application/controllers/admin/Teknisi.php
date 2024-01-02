@@ -31,7 +31,7 @@ class Teknisi extends CI_Controller {
 	public function simpan_teknisi()
 	{
         $this->form_validation->set_rules('user_nama', 'Nama', 'required|min_length[1]|max_length[255]');
-        $this->form_validation->set_rules('user_email', 'Email', 'is_unique[user.user_email]|min_length[1]|max_length[255]');
+        $this->form_validation->set_rules('user_email', 'Email', 'is_unique[user.user_email]|valid_email|min_length[1]|max_length[255]');
 		$this->form_validation->set_rules('user_username', 'Username', 'required|is_unique[user.user_username]|min_length[6]');
 		$this->form_validation->set_rules('user_password', 'Password', 'required|min_length[6]');
 
@@ -39,6 +39,7 @@ class Teknisi extends CI_Controller {
 		$this->form_validation->set_message('max_length', '*{field} tidak boleh lebih dari {param} karakter.');
 		$this->form_validation->set_message('min_length', '*{field} setidaknya harus memiliki {param} karakter.');
 		$this->form_validation->set_message('is_unique', '*{field} sudah ada.');
+		$this->form_validation->set_message('valid_email', '*{field} tidak valid. Tambahkan @gmail setelahnya.');
 
         if ($this->form_validation->run() == FALSE) {
             $isi = [
@@ -76,13 +77,14 @@ class Teknisi extends CI_Controller {
 	public function update_teknisi()
 	{
         $this->form_validation->set_rules('user_nama', 'Nama', 'required|min_length[1]|max_length[255]');
-        $this->form_validation->set_rules('user_email', 'Email', 'min_length[1]|max_length[255]');
+        $this->form_validation->set_rules('user_email', 'Email', 'min_length[1]|valid_email|max_length[255]');
 		$this->form_validation->set_rules('user_username', 'Username', 'required|min_length[6]');
 
 		$this->form_validation->set_message('required', '*{field} masih kosong. Silahkan diisi.');
 		$this->form_validation->set_message('max_length', '*{field} tidak boleh lebih dari {param} karakter.');
 		$this->form_validation->set_message('min_length', '*{field} setidaknya harus memiliki {param} karakter.');
 		$this->form_validation->set_message('is_unique', '*{field} sudah ada.');
+		$this->form_validation->set_message('valid_email', '*{field} tidak valid. Tambahkan @gmail setelahnya.');
 
 		$id = $this->input->post('user_id');
         if ($this->form_validation->run() == FALSE) {
