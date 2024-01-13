@@ -65,9 +65,10 @@
                                 
                                 <div class="row">
                                     <div class="col-md-12 col-lg-12">
-                                        <div class="form-group mb-3">
+                                        <div class="form-group mb-3  <?= form_error('jadser_alamat') ? 'has-error' : null?>">
                                             <label>Alamat</label>
                                             <textarea name="jadser_alamat" class="form-control" rows="4" placeholder="Alamat Pelanggan"></textarea>
+                                            <small style="color: red;"><?= form_error('jadser_alamat')?></small>
                                         </div>
                                     </div>
                                 </div>   
@@ -106,9 +107,10 @@
                                 
                                 <div class="row">
                                     <div class="col-md-12 col-lg-12">
-                                        <div class="form-group mb-3">
+                                        <div class="form-group mb-3  <?= form_error('jadser_desker') ? 'has-error' : null?>">
                                             <label>Deskripsi Kerusakan</label>
                                             <textarea name="jadser_desker" class="form-control" rows="4" placeholder="Deskripsikan Kerusakan"></textarea>
+                                            <small style="color: red;"><?= form_error('jadser_desker')?></small>
                                         </div>
                                     </div>
                                 </div>   

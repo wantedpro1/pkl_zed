@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
 class Dokgampek extends CI_Controller {
 
     public function __construct()
@@ -28,6 +29,22 @@ class Dokgampek extends CI_Controller {
         ];
         $this->load->view('managerumum/partial/dashboard', $isi);
     }
+
+	// public function ekspor_global()
+    // {
+	// 	$this->load->library('pdfgenerator');
+	// 	$data['title'] = "Rekap Data Dokumentasi Pekerjaan";
+    //     $file_pdf = $data['title'];
+	// 	$paper = 'A4';
+    //     $orientation = "landscape";
+
+	// 	// $isi['data'] = $this->db->get('dokgampek')->result();
+    //     $html = $this->load->view('managerumum/dokgampek/view_dokgampek', $data, true);
+
+    //     $this->pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+	// 	// redirect('managerumum/dokgampek');
+
+    // }
 
 	public function setuju_dokgampek($id)
 	{

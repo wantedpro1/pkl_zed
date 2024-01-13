@@ -61,18 +61,15 @@ class Profil extends CI_Controller {
 			$this->load->library('upload', $config);
 			$this->upload->initialize($config);
 
-			// Upload Dokumen
-			if ($this->upload->do_upload('user_picture')) {
-				$user_picture = $this->upload->data('file_name');
-			} 
-
             if ($cek_username->num_rows() == 0) {
                 $data = array (
                     'user_nama' 		=> $this->input->post('user_nama') ,
                     'user_email' 	    => $this->input->post('user_email') ,
-                    'user_username' 	=> $this->input->post('user_username') ,
-                    'user_picture' 	    => $user_picture 
+                    'user_username' 	=> $this->input->post('user_username')
                 );
+                if ($this->upload->do_upload('user_picture')) {
+                    $data['user_picture'] = $this->upload->data('file_name');
+                } 
 			    $this->m_profil->updateprofil($user_id, $data);
                 
                 $this->session->set_flashdata('flashdata','Data Pengguna berhasil diupdate');
@@ -81,9 +78,11 @@ class Profil extends CI_Controller {
             } else if (($cek_username->num_rows() == 1) && ($user_username == $user_usernameold)) {
                 $data = array (
                     'user_nama' 		=> $this->input->post('user_nama') ,
-                    'user_email' 	    => $this->input->post('user_email') ,
-                    'user_picture' 	    => $user_picture 
+                    'user_email' 	    => $this->input->post('user_email')
                 );
+                if ($this->upload->do_upload('user_picture')) {
+                    $data['user_picture'] = $this->upload->data('file_name');
+                } 
 			    $this->m_profil->updateprofil($user_id, $data);
                 
                 $this->session->set_flashdata('flashdata','Data Pengguna berhasil diupdate');

@@ -80,7 +80,11 @@
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 								<div class="avatar-sm">
-									<img src="<?= base_url()?>assets/profil/<?= $data_admin['user_picture'];?>". alt="#" class="avatar-img rounded-circle">
+									<?php if($data_admin['user_picture']):?>
+										<img src="<?= base_url()?>assets/profil/<?= $data_admin['user_picture'];?>". alt="#" class="avatar-img rounded-circle">
+									<?php else:?>
+										<img src="<?= base_url()?>assets/profil/original.jpg". alt="#" class="avatar-img rounded-circle">
+									<?php endif;?>
 								</div>
 							</a>
 							<ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -88,7 +92,11 @@
 									<li>
 										<div class="user-box">
 											<div class="avatar-lg">
-												<img src="<?= base_url()?>assets/profil/<?= $data_admin['user_picture'];?>" alt="#" class="avatar-img rounded">
+												<?php if($data_admin['user_picture']):?>
+													<img src="<?= base_url()?>assets/profil/<?= $data_admin['user_picture'];?>". alt="#" class="avatar-img rounded">
+												<?php else:?>
+													<img src="<?= base_url()?>assets/profil/original.jpg". alt="#" class="avatar-img rounded">
+												<?php endif;?>
 											</div>
 											<div class="u-text">
 												<h4><?= $data_admin['user_nama'] ?></h4>
@@ -118,7 +126,11 @@
 				<div class="sidebar-content">
 					<div class="user">
 						<div class="avatar-sm float-left mr-2">
-							<img src="<?= base_url()?>assets/profil/<?= $data_admin['user_picture'];?>" alt="#" class="avatar-img rounded-circle">
+						<?php if($data_admin['user_picture']):?>
+							<img src="<?= base_url()?>assets/profil/<?= $data_admin['user_picture'];?>". alt="#" class="avatar-img rounded-circle">
+						<?php else:?>
+							<img src="<?= base_url()?>assets/profil/original.jpg". alt="#" class="avatar-img rounded-circle">
+						<?php endif;?>
 						</div>
 						<div class="info">
 							<a>

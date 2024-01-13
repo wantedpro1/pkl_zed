@@ -32,6 +32,7 @@
                         <div class="row">
                             <div class="col-md-6 col-lg-12">
                                 <input type="hidden" name="user_id" value="<?= $data['user_id'];?>" class="form-control" readonly>
+                                <input type="hidden" name="user_usernameold" value="<?= $data['user_username'];?>" class="form-control" readonly>
                                 
                                 <div class="form-group mb-3 <?= form_error('user_nama') ? 'has-error' : null?>">
                                     <label for="nama_teknisi">Nama Lengkap</label>

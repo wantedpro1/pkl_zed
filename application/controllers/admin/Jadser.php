@@ -57,7 +57,7 @@ class Jadser extends CI_Controller {
 	public function simpan_jadser()
 	{
         $this->form_validation->set_rules('jadser_nama', 'Nama Pelanggan', 'required|min_length[1]|max_length[255]');
-        $this->form_validation->set_rules('jadser_notelp', 'No Telepon', 'is_natural|min_length[1]|max_length[15]');
+        $this->form_validation->set_rules('jadser_notelp', 'No Telepon', 'required|is_natural|min_length[1]|max_length[15]');
         $this->form_validation->set_rules('jadser_alamat', 'Alamat Pengguna', 'required|min_length[1]|max_length[1000]');
         $this->form_validation->set_rules('jadser_jenpek', 'Jenis Pekerjaan', 'required');
 		$this->form_validation->set_rules('jadser_merk', 'Merk Barang', 'required|min_length[1]|max_length[255]');
@@ -117,7 +117,7 @@ class Jadser extends CI_Controller {
     public function update_jadser()
 	{
 		$this->form_validation->set_rules('jadser_nama', 'Nama Pelanggan', 'required|min_length[1]|max_length[255]');
-        $this->form_validation->set_rules('jadser_notelp', 'No Telepon', 'is_natural|min_length[1]|max_length[15]');
+        $this->form_validation->set_rules('jadser_notelp', 'No Telepon', 'required|is_natural|min_length[1]|max_length[15]');
         $this->form_validation->set_rules('jadser_alamat', 'Alamat Pengguna', 'required|min_length[1]|max_length[1000]');
 		$this->form_validation->set_rules('jadser_merk', 'Merk Barang', 'required|min_length[1]|max_length[255]');
         $this->form_validation->set_rules('jadser_jenbar', 'Jenis Barang', 'required|min_length[1]|max_length[255]');

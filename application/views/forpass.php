@@ -21,44 +21,49 @@
     <div class="login-wrapper">
         <div class="d-flex justify-content-center mt-5">
             <div class="card" id="login-card">
-                <div class="card-body text-center">
-                    <h3>Sistem Manajemen Layanan Elektronik<br><span class="text-carolina bold"> CV. Kadang Bayu</span></h3>
+                <div class="row text-center">
+                    <div class="col-md-2 col-lg-2">
+                        <div class="card-body">
+                            <img src="<?= base_url()?>assets/logo/image.png" style="width:85px" alt="#" class="avatar-img rounded">
+                        </div>
+                    </div>
+                    <div class="col-md-10 col-lg-10">
+                        <div class="card-body">
+                            <h3>Sistem Manajemen Layanan Elektronik <span class="text-carolina bold"> CV. Kadang Bayu</span></h3>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="<?= base_url('login/conf_forpass')?>" enctype="multipart/form-data">
                         <div class="text-center pb-3">
                             <h5 class="text-center bold">Ganti Password</h5>
                         </div>
-                        <div class="input-group mb-3 <?= form_error('user_email') ? 'has-error' : null?>">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="ti-email"></i></span>
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12">
+                                <div class="form-group mb-3 <?= form_error('user_email') ? 'has-error' : null?>">
+                                    <label><i class="ti-email"></i> <b>Email</b></label>
+                                    <input type="text" name="user_email" class="form-control" placeholder="email">
+                                    <small style="color: red;"><?= form_error('user_email')?></small>
+                                </div>
+                                <div class="form-group mb-3 <?= form_error('user_username') ? 'has-error' : null?>">
+                                    <label><i class="ti-user"></i> <b>Username</b></label>
+                                    <input type="text" name="user_username" class="form-control" placeholder="username">
+                                    <small style="color: red;"><?= form_error('user_username')?></small>
+                                </div>
+                                <div class="form-group mb-3 <?= form_error('user_newpass') ? 'has-error' : null?>">
+                                    <label><i class="ti-lock"></i> <b>Password Baru</b></label>
+                                    <input type="password" name="user_newpass" class="form-control" placeholder="masukkan password baru">
+                                    <small style="color: red;"><?= form_error('user_newpass')?></small>
+                                </div>
+                                <div class="form-group mb-3 <?= form_error('user_confnewpass') ? 'has-error' : null?>">
+                                    <label><i class="ti-key"></i> <b>Konfirmasi Password Baru</b></label>
+                                    <input type="password" name="user_confnewpass" class="form-control" placeholder="konfirmasi password baru">
+                                    <small style="color: red;"><?= form_error('user_confnewpass')?></small>
+                                </div>
                             </div>
-                            <input type="text" name="user_email" class="form-control" placeholder="email">
-                            <small style="color: red;"><?= form_error('user_email')?></small>
-                        </div>
-                        <div class="input-group mb-3 <?= form_error('user_username') ? 'has-error' : null?>">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="ti-user"></i></span>
-                            </div>
-                            <input type="text" name="user_username" class="form-control" placeholder="username">
-                            <small style="color: red;"><?= form_error('user_username')?></small>
-                        </div>
-                        <div class="input-group mb-3 <?= form_error('user_newpass') ? 'has-error' : null?>">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="ti-lock"></i></span>
-                            </div>
-                            <input type="password" name="user_newpass" class="form-control" placeholder="new password">
-                            <small style="color: red;"><?= form_error('user_newpass')?></small>
-                        </div>
-                        <div class="input-group mb-3 <?= form_error('user_confnewpass') ? 'has-error' : null?>">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="ti-key"></i></span>
-                            </div>
-                            <input type="password" name="user_confnewpass" class="form-control" placeholder="confirm new password">
-                            <small style="color: red;"><?= form_error('user_confnewpass')?></small>
-                        </div>                       
+                        </div>       
                         <div class="form-group text-right">
-                            <button type="submit" class="btn btn-carolina">Change Password</button>
+                            <button type="submit" class="btn btn-carolina">Ganti Password</button>
                         </div>
                     </form>
                 </div>
@@ -68,8 +73,8 @@
                     </li>
                 </ul>
                 <div class="card-footer">
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem sapiente illum obcaecati unde cum alias assumenda eos animi, temporibus molestiae dignissimos debitis consequatur id aut praesentium nisi accusamus quos possimus.</p>
-                    <p><small> &copy; <?= date('Y') ?> PKL Zed. All rights reserved. </small></p>
+                    <p class="card-text">Sistem Manajemen Layanan Elektronik CV. Kadang Bayu.</p>
+                    <p><small> &copy; <?= date('Y') ?> Sistem Manajemen Layanan Elektronik CV. Kadang Bayu. All rights reserved. </small></p>
                 </div>
             </div>
         </div>
