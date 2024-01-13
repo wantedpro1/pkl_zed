@@ -34,7 +34,11 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-3 col-md-3">
+                        <?php if($data['user_picture']):?>
                             <img class="avatar-img rounded-circle" src="<?= base_url()?>assets/profil/<?= $data['user_picture'];?>" style="width:100%" alt="">
+                        <?php else:?>
+                            <img class="avatar-img rounded-circle" src="<?= base_url()?>assets/profil/original.jpg" style="width:100%" alt="">
+                        <?php endif;?>
                         </div>
                         <div class="col-9 col-md-9">
                             <p><b>ID Pengguna:</b> <?=$data['user_id'];?></p>
