@@ -31,11 +31,11 @@ class Dokgampek extends CI_Controller {
         $this->load->view('managerumum/partial/dashboard', $isi);
     }
 
-	public function download_pdf($jadser_id)
+	public function download_pdf($dokgampek_id)
     {
 		$isi = [
-            'dokgampek'   => $this->db->query("SELECT * FROM dokgampek WHERE jadser_id='$jadser_id'")->row_array(),
-            'jadser'	  => $this->db->query("SELECT * FROM jadser WHERE jadser_id='$jadser_id'")->row_array()
+            'dokgampek'   => $this->db->query("SELECT * FROM dokgampek WHERE dokgampek_id='$dokgampek_id'")->row_array()
+            // 'jadser'	  => $this->db->query("SELECT * FROM jadser WHERE jadser_id='$jadser_id'")->row_array()
         ];
 		$this->load->view('managerumum/dokgampek/view_dokgampek', $isi);
     }

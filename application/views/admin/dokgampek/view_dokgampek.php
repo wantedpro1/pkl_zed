@@ -25,6 +25,8 @@
             $dokgampek_createby     = $dokgampek['dokgampek_createby'];
             $dokgampek_status       = $dokgampek['dokgampek_status'];
 
+            $jadser = $this->db->query("SELECT * FROM jadser WHERE jadser_id='$jadser_id'")->row_array();
+
             $jadser_nama        = $jadser['jadser_nama'];
             $jadser_notelp      = $jadser['jadser_notelp'];
             $jadser_alamat      = $jadser['jadser_alamat'];
@@ -61,19 +63,19 @@
         <div class="row">
             <div class="col-6 col-sm-4 text-center">
                 <b>Nomor Pembelian</b>
-                <img src="<?= base_url().'assets/dokumentasi/'.$lokasi.'/'.$dokgampek_nopem;?>" style="width:100%;" alt="">
+                <img src="<?= base_url().'assets/dokumentasi/'.$lokasi.'/'.$dokgampek_nopem;?>" style="max-height:270px;" alt="">
                 <br>
                 <p><?=$dokgampek_nopem;?></p>
             </div>
             <div class="col-6 col-sm-4 text-center">
                 <b>Kartu Garansi</b>
-                <img src="<?= base_url().'assets/dokumentasi/'.$lokasi.'/'.$dokgampek_kargar;?>" style="width:100%;" alt="">
+                <img src="<?= base_url().'assets/dokumentasi/'.$lokasi.'/'.$dokgampek_kargar;?>" style="max-height:270px;" alt="">
                 <br>
                 <p><?=$dokgampek_kargar;?></p>
             </div>
             <div class="col-6 col-sm-4 text-center">
                 <b>Part Baru</b>
-                <img src="<?= base_url().'assets/dokumentasi/'.$lokasi.'/'.$dokgampek_parbar;?>" style="width:100%;" alt="">
+                <img src="<?= base_url().'assets/dokumentasi/'.$lokasi.'/'.$dokgampek_parbar;?>" style="max-height:270px;" alt="">
                 <br>
                 <p><?=$dokgampek_parbar;?></p>
             </div>
@@ -81,19 +83,19 @@
         <div class="row">
             <div class="col-6 col-sm-4 text-center">
                 <b>Foto Pekerjaan 1</b>
-                <img src="<?= base_url().'assets/dokumentasi/'.$lokasi.'/'.$dokgampek_fotpek1;?>" style="width:100%;" alt="">
+                <img src="<?= base_url().'assets/dokumentasi/'.$lokasi.'/'.$dokgampek_fotpek1;?>" style="max-height:270px;" alt="">
                 <br>
                 <p><?=$dokgampek_fotpek1;?></p>
             </div>
             <div class="col-6 col-sm-4 text-center">
                 <b>Foto Pekerjaan 2</b>
-                <img src="<?= base_url().'assets/dokumentasi/'.$lokasi.'/'.$dokgampek_fotpek2;?>" style="width:100%;" alt="">
+                <img src="<?= base_url().'assets/dokumentasi/'.$lokasi.'/'.$dokgampek_fotpek2;?>" style="max-height:270px;" alt="">
                 <br>
                 <p><?=$dokgampek_fotpek2;?></p>
             </div>
             <div class="col-6 col-sm-4 text-center">
                 <b>Foto Pekerjaan 3</b>
-                <img src="<?= base_url().'assets/dokumentasi/'.$lokasi.'/'.$dokgampek_fotpek3;?>" style="width:100%;" alt="">
+                <img src="<?= base_url().'assets/dokumentasi/'.$lokasi.'/'.$dokgampek_fotpek3;?>" style="max-height:270px;" alt="">
                 <br>
                 <p><?=$dokgampek_fotpek3;?></p>
             </div>
@@ -101,19 +103,19 @@
         <div class="row">
             <div class="col-6 col-sm-4 text-center">
                 <b>Nomor Seri Unit</b>
-                <img src="<?= base_url().'assets/dokumentasi/'.$lokasi.'/'.$dokgampek_nsu;?>" style="width:100%;" alt="">
+                <img src="<?= base_url().'assets/dokumentasi/'.$lokasi.'/'.$dokgampek_nsu;?>" style="max-height:270px;" alt="">
                 <br>
                 <p><?=$dokgampek_nsu;?></p>
             </div>
             <div class="col-6 col-sm-4 text-center">
                 <b>Model Unit</b>
-                <img src="<?= base_url().'assets/dokumentasi/'.$lokasi.'/'.$dokgampek_modun;?>" style="width:100%;" alt="">
+                <img src="<?= base_url().'assets/dokumentasi/'.$lokasi.'/'.$dokgampek_modun;?>" style="max-height:270px;" alt="">
                 <br>
                 <p><?=$dokgampek_modun;?></p>
             </div>
             <div class="col-6 col-sm-4 text-center">
                 <b>Dokumentasi Lainnya</b>
-                <img src="<?= base_url().'assets/dokumentasi/'.$lokasi.'/'.$dokgampek_doklai;?>" style="width:100%;" alt="">
+                <img src="<?= base_url().'assets/dokumentasi/'.$lokasi.'/'.$dokgampek_doklai;?>" style="max-height:270px;" alt="">
                 <br>
                 <p><?=$dokgampek_doklai;?></p>
             </div>

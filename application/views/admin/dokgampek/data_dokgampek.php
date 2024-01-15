@@ -68,7 +68,7 @@
                                     <td>
                                         <div class="form-button-action">
                                             <button type="button" data-toggle="tooltip" title="" class="btn-link"><a href="<?= base_url()?>admin/dokgampek/download_dokgampek/<?= $dokgampek_id;?>"><i class="fa fa-download"></i></a>  
-                                            <button type="button" data-toggle="tooltip" title="" class="btn-link"><a href="<?= base_url()?>admin/dokgampek/download_pdf/<?= $jadser_id;?>"><i class="fa fa-file"></i></a>     
+                                            <button type="button" data-toggle="tooltip" title="" class="btn-link"><a href="<?= base_url()?>admin/dokgampek/download_pdf/<?= $dokgampek_id;?>"><i class="fa fa-file"></i></a>     
                                             <button type="button" data-toggle="tooltip" title="" class="btn-link"><a href="<?= base_url()?>admin/dokgampek/detail_dokgampek/<?= $dokgampek_id;?>"><i class="fa fa-eye"></i></a>
                                             </button>
                                             <button type="button" data-toggle="tooltip" title="" class="btn-link"><a href="<?= base_url()?>admin/dokgampek/edit_dokgampek/<?= $dokgampek_id;?>"><i class="fa fa-edit"></i></a>                                             
