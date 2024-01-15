@@ -27,12 +27,12 @@
                             </span>
                             Tambah Dokumentasi
                         </a>
-                        <a class="btn btn-success ml-1" href="<?= base_url('admin/dokgampek/download_global')?>">
+                        <!-- <a class="btn btn-success ml-1" href="<?= base_url('admin/dokgampek/download_global')?>">
                             <span class="btn-label">
                                 <i class="fa fa-download"></i>
                             </span>
                             Download Dokumentasi
-                        </a>
+                        </a> -->
                     </div>
                 </div>
                 <div class="card-body">
@@ -52,7 +52,8 @@
                             <?php foreach ($data as $row) { ?>
                                 <tr>
                                     <?php $dokgampek_id = $row->dokgampek_id;?>
-                                    <td><?= $row->jadser_id;?></td>
+                                    <?php $jadser_id = $row->jadser_id;?>
+                                    <td><?= $jadser_id;?></td>
                                     <td><?= $row->dokgampek_nama;?></td>
                                     <td>
                                         <?php if($row->dokgampek_status == '0'):?>
@@ -67,6 +68,7 @@
                                     <td>
                                         <div class="form-button-action">
                                             <button type="button" data-toggle="tooltip" title="" class="btn-link"><a href="<?= base_url()?>admin/dokgampek/download_dokgampek/<?= $dokgampek_id;?>"><i class="fa fa-download"></i></a>  
+                                            <button type="button" data-toggle="tooltip" title="" class="btn-link"><a href="<?= base_url()?>admin/dokgampek/download_pdf/<?= $jadser_id;?>"><i class="fa fa-file"></i></a>     
                                             <button type="button" data-toggle="tooltip" title="" class="btn-link"><a href="<?= base_url()?>admin/dokgampek/detail_dokgampek/<?= $dokgampek_id;?>"><i class="fa fa-eye"></i></a>
                                             </button>
                                             <button type="button" data-toggle="tooltip" title="" class="btn-link"><a href="<?= base_url()?>admin/dokgampek/edit_dokgampek/<?= $dokgampek_id;?>"><i class="fa fa-edit"></i></a>                                             

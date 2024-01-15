@@ -29,6 +29,15 @@ class Dokgampek extends CI_Controller {
         $this->load->view('admin/partial/dashboard', $isi);
     }
 
+	public function download_pdf($jadser_id)
+    {
+		$isi = [
+            'dokgampek'   => $this->db->query("SELECT * FROM dokgampek WHERE jadser_id='$jadser_id'")->row_array(),
+            'jadser'	  => $this->db->query("SELECT * FROM jadser WHERE jadser_id='$jadser_id'")->row_array()
+        ];
+		$this->load->view('admin/dokgampek/view_dokgampek', $isi);
+    }
+
 	public function setuju_dokgampek($id)
 	{
 		$data['dokgampek_status'] = 1;
@@ -45,16 +54,16 @@ class Dokgampek extends CI_Controller {
 		redirect('admin/dokgampek');
 	}
 
-	public function download_global()
-	{
-		$directory 		= './assets/dokumentasi/';
-		$filename		= 'rekap_dokumentasi';
+	// public function download_global()
+	// {
+	// 	$directory 		= './assets/dokumentasi/';
+	// 	$filename		= 'rekap_dokumentasi';
 
-		$this->zip->read_dir($directory, FALSE);
-		$this->zip->download($filename);
+	// 	$this->zip->read_dir($directory, FALSE);
+	// 	$this->zip->download($filename);
 	
-		redirect('admin/dokgampek');
-	}
+	// 	redirect('admin/dokgampek');
+	// }
 
 	public function download_dokgampek($id)
 	{

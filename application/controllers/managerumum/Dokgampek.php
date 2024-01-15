@@ -9,6 +9,7 @@ class Dokgampek extends CI_Controller {
 		parent::__construct();
         $this->load->model('managerumum/m_dokgampek');
 		$this->load->library('zip');
+		// $this->load->library('dompdf_gen');
 	}
 
 	public function index()
@@ -30,20 +31,28 @@ class Dokgampek extends CI_Controller {
         $this->load->view('managerumum/partial/dashboard', $isi);
     }
 
-	// public function ekspor_global()
+	public function download_pdf($jadser_id)
+    {
+		$isi = [
+            'dokgampek'   => $this->db->query("SELECT * FROM dokgampek WHERE jadser_id='$jadser_id'")->row_array(),
+            'jadser'	  => $this->db->query("SELECT * FROM jadser WHERE jadser_id='$jadser_id'")->row_array()
+        ];
+		$this->load->view('managerumum/dokgampek/view_dokgampek', $isi);
+    }
+
+	// public function download_pdf()
     // {
-	// 	$this->load->library('pdfgenerator');
-	// 	$data['title'] = "Rekap Data Dokumentasi Pekerjaan";
-    //     $file_pdf = $data['title'];
-	// 	$paper = 'A4';
-    //     $orientation = "landscape";
+	// 	$isi['data'] = $this->db->get('dokgampek')->result();
+	// 	$this->load->view('managerumum/dokgampek/view_dokgampek', $isi);
 
-	// 	// $isi['data'] = $this->db->get('dokgampek')->result();
-    //     $html = $this->load->view('managerumum/dokgampek/view_dokgampek', $data, true);
+	// 	$paper_size 	= 'A4';
+	// 	$orientation 	= 'landscape';
+	// 	$html			= $this->output->get_output();
+	// 	$this->dompdf->set_paper($paper_size, $orientation);
 
-    //     $this->pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
-	// 	// redirect('managerumum/dokgampek');
-
+	// 	$this->dompdf->load_html($html);
+	// 	$this->dompdf->render();
+	// 	$this->dompdf->stream('Data Dokumentasi Pekerjaan.pdf', array('Attachment' => 0));
     // }
 
 	public function setuju_dokgampek($id)
@@ -62,16 +71,16 @@ class Dokgampek extends CI_Controller {
 		redirect('managerumum/dokgampek');
 	}
 
-	public function download_global()
-	{
-		$directory 		= './assets/dokumentasi/';
-		$filename		= 'rekap_dokumentasi';
+	// public function download_global()
+	// {
+	// 	$directory 		= './assets/dokumentasi/';
+	// 	$filename		= 'rekap_dokumentasi';
 
-		$this->zip->read_dir($directory, FALSE);
-		$this->zip->download($filename);
+	// 	$this->zip->read_dir($directory, FALSE);
+	// 	$this->zip->download($filename);
 	
-		redirect('managerumum/dokgampek');
-	}
+	// 	redirect('managerumum/dokgampek');
+	// }
 
 	public function download_dokgampek($id)
 	{
